@@ -1,0 +1,285 @@
+.respecting-feedback {
+    margin: 2em 0
+}
+
+.respecting-feedback .feed-lhs {
+    float: left;
+    vertical-align: middle
+}
+
+.respecting-feedback .feed-lhs p {
+    font-weight: 600
+}
+
+.respecting-feedback .feed-rhs {
+    float: right;
+}
+
+.respecting-feedback .feed-rhs p {
+    margin: 0
+}
+
+.respecting-feedback .feed-rhs p:nth-child(3) {
+    font-weight: 600
+}
+
+.respecting-feedback .feed-rhs h4 {
+    font-size: 70px;
+    color: #f47e27
+}
+
+.respecting-feedback .feed-rhs h4 span {
+    font-size: 40px;
+    color: #f47e27
+}
+
+.review-middle {
+    background: #851414;
+    padding: 0em 0 1em
+}
+
+.review-middle .heding {
+    padding: 20px 0;
+    color: #ffffff
+}
+
+.review-middle .heding h2 {
+    color: #ffffff;
+    margin: 0
+}
+
+.rating h3 {
+    color: #ffffff;
+}
+
+.rating i {
+    font-size: 40px;
+    color: #ffffff
+}
+
+.text-white {
+    color: #fff;
+}
+
+.text-white span {
+    color: #f47e26;
+    font-weight: 900;
+}
+
+.progress {
+    background: #d62c2c;
+    border: 0px solid rgba(245, 245, 245, 1);
+    border-radius: 0px;
+    height: 13px;
+}
+
+.progress-label-before {
+    float: left;
+    margin-right: 5px;
+    color: #ffffff;
+}
+
+.reviewBar {
+    position: relative;
+}
+
+.reviewBar .progress {
+    margin-bottom: 17px
+}
+
+.progress-label-after {
+    position: absolute;
+    top: -2px;
+    right: -45px;
+    margin-left: 5px;
+    color: #ffffff;
+}
+
+.progress-bar {
+    background-image: linear-gradient(to bottom, #ffffff 0, #ffffff 100%);
+}
+
+.filter-review {
+    padding: 4em 0
+}
+
+.filter-review .control-label {
+    width: 15%
+}
+
+.singleReview {
+    border-bottom: 1px solid #d0cbcb;
+    margin: 0em 0;
+    padding: 1em 0;
+    text-align: left
+}
+
+.singleReview p {
+    margin: 0;
+    padding: 0px
+}
+
+.txt-small {
+    font-size: 24px
+}
+
+/* .singleReview .insurance-info{padding: 15px 0;display: flex;justify-content: space-around;flex-direction: row;} */
+
+.singleReview .insurance-info p {
+    padding: 0px 0 0 10px;
+}
+
+.singleReview p:nth-child(1) {
+    font-weight: 600
+}
+
+.reviewStatus-bg i {
+    font-size: 20px;
+    padding-top: 0px;
+    display: inline;
+}
+
+.reviewStatus-sm {
+    display: none;
+}
+
+.reviewStatus-sm i {
+    font-size: 20px;
+    padding-top: 0px;
+    display: none
+}
+
+.singleReview img {
+    margin-left: 15px;
+    width: 75%
+}
+
+.checked {
+    color: #daa520
+}
+
+.jq-ry-container {
+    padding: 0 !important
+}
+
+.rightInsuranceSection {}
+
+.rightInsuranceSection .rightProgressBar {
+    background: #88c4c2;
+    padding: 3em 5em 2em 2em;
+}
+
+.rightInsuranceSection .rightProgressBar .rp {
+    margin-left: 3em;
+}
+
+.rightInsuranceSection .progress {
+    background: #ffffff;
+    border: 0px solid rgba(245, 245, 245, 1);
+    border-radius: 0px;
+    height: 21px;
+}
+
+.rightInsuranceSection .progress-label-before {
+    float: left;
+    margin-right: 5px;
+    color: #000000;
+}
+
+.rightInsuranceSection .reviewBar {
+    position: relative;
+}
+
+.rightInsuranceSection .progress-label-after {
+    position: absolute;
+    top: -2px;
+    right: -40px;
+    margin-left: 5px;
+    color: #000000;
+}
+
+.rightInsuranceSection .progress-bar {
+    background-image: linear-gradient(to bottom, #d4684b 0, #d4684b 100%);
+    background-color: #ffffff
+}
+
+.fg-pagination {
+    text-align: left
+}
+
+.rightInsuranceSection a {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px 0
+}
+
+@media screen and (min-width:300px) and (max-width:350px) {
+    .rightInsuranceSection .rightProgressBar .rp {
+        margin-left: 0em;
+    }
+}
+
+@media screen and (min-width:300px) and (max-width:575px) {
+    .respecting-feedback .feed-rhs {
+        float: none;
+    }
+    .singleReview {
+        text-align: center;
+        background: #ece9e9;
+        margin: 10px 0
+    }
+    .singleReview img {
+        margin-left: -10px
+    }
+    .singleReview .insurance-info p {
+        padding: 0px 0 0 0px;
+        text-align: left
+    }
+    .fg-pagination {
+        text-align: center
+    }
+    .reviewStatus-bg i {
+        font-size: 20px;
+        padding-top: 10px;
+        display: none
+    }
+    .reviewStatus-sm {
+        text-align: left;
+        display: block
+    }
+    .reviewStatus-sm i {
+        font-size: 20px;
+        padding-top: 10px;
+        display: inline;
+    }
+    .singleReview p {
+        margin: 0;
+        padding: 15px;
+        text-align: left
+    }
+}
+
+@media screen and (min-width:576px) and (max-width:640px) {
+    .respecting-feedback .feed-rhs {
+        float: none;
+    }
+    .singleReview {
+        text-align: center
+    }
+    .singleReview img {
+        margin-left: -10px
+    }
+    .fg-pagination {
+        text-align: center
+    }
+    .reviewStatus-bg i {
+        font-size: 20px;
+        padding-top: 10px;
+        display: none
+    }
+    .reviewStatus-sm i {
+        font-size: 20px;
+        padding-top: 10px;
+        display: inline
+    }
+}
