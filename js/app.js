@@ -10,7 +10,7 @@ app.config(['$routeProvider', function ($routeProvider, $locationProvider) {
             controller: 'homeController'
         })
         .when('/why-us', {
-            templateUrl: '/why-us.html',
+            templateUrl: 'sih2019/why-us.html',
             controller: 'whyUsController'
         });
 }]);
