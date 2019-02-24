@@ -6,11 +6,11 @@ app.config(['$routeProvider', function ($routeProvider, $locationProvider) {
 
     $routeProvider.
         when('/',{
-            templateUrl: 'sih2019/home.html',
+            templateUrl: './home.html',
             controller: 'homeController'
         })
         .when('/why-us', {
-            templateUrl: 'sih2019/why-us.html',
+            templateUrl: './why-us.html',
             controller: 'whyUsController'
         });
 }]);
