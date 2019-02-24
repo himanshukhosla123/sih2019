@@ -6,7 +6,7 @@ app.config(['$routeProvider', function ($routeProvider, $locationProvider) {
 
     $routeProvider.
         when('/',{
-            templateUrl: './home.html',
+            templateUrl: 'sih2019/home.html',
             controller: 'homeController'
         })
         .when('/why-us', {
