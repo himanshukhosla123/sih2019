@@ -61,7 +61,7 @@ function LoadPrefLoc(e) {
             jobId: e
         },
         success: function(e) {
-            e.indexOf("Database error") > 0 && alert(e);
+            e.indexOf("Database error") > 0 && //alert(e);
             try {
                 var t = $.parseJSON(e);
                 $("#ddlPrefLoc,.ddljPrefLoc").empty().append($("<option></option>").val("0").html("Select Preferred location*"));
@@ -76,7 +76,7 @@ function LoadPrefLoc(e) {
             }
         },
         error: function(e) {
-            alert(e)
+            //alert(e)
         }
     })
 }
@@ -92,7 +92,7 @@ function LoadState() {
             iID: 1
         },
         success: function(e) {
-            e.indexOf("Database error") > 0 && alert(e);
+            e.indexOf("Database error") > 0 && //alert(e);
             try {
                 var t = $.parseJSON(e);
                 $("#ddlState,.ddljstate").empty().append($("<option></option>").val("0").html("Please Select State *"));
@@ -107,7 +107,7 @@ function LoadState() {
             }
         },
         error: function(e) {
-            alert(e)
+            //alert(e)
         }
     })
 }
@@ -142,7 +142,7 @@ function SaveAdvisor() {
             $("#pErrorMessage").html(e), $("#divErrMessage").fadeIn(), ResetAdvisor(), window.location.href = e
         },
         error: function(e) {
-            alert(e)
+            //alert(e)
         }
     })
 }
@@ -162,7 +162,7 @@ function PopCityAccState() {
             stateId: e
         },
         success: function(e) {
-            e.indexOf("Database error") > 0 && alert(e);
+            e.indexOf("Database error") > 0 && //alert(e);
             try {
                 var t = $.parseJSON(e);
                 $("#ddlCity,.ddljCity").empty().append($("<option></option>").val("0").html("Please Select City *"));
@@ -177,7 +177,7 @@ function PopCityAccState() {
             }
         },
         error: function(e) {
-            alert("fn PopCityAccState " + e)
+            //alert("fn PopCityAccState " + e)
         }
     })
 }
@@ -198,7 +198,7 @@ function SaveAppreciation() {
         data: l,
         success: function(e) {},
         error: function(e) {
-            alert(e.statusText)
+            //alert(e.statusText)
         }
     }), $.ajax({
         url: "/general-insurance/Services/ReportForms.ashx",
@@ -218,7 +218,7 @@ function SaveAppreciation() {
             ResetAdvisor(), window.location.href = e
         },
         error: function(e) {
-            alert(e)
+            //alert(e)
         }
     })
 }
@@ -268,7 +268,7 @@ function SaveEnquiry() {
             l = l.replace("$Name$", $("#txtFirstName").val()).replace("$requestId$", t[2]), SendServicesms($("#txtMobileNo").val(), l), ResetAdvisor(), window.location.href = "/general-insurance/" + t[0]
         },
         error: function(e) {
-            alert(e)
+            //alert(e)
         }
     })
 }
@@ -295,7 +295,7 @@ function SaveVOCSection() {
             sessionStorage.setItem("UserComment", $("#txtFeedback").val()), window.location.href = "/general-insurance/share-your-appreciation/thank-you"
         },
         error: function(e) {
-            alert(e)
+            //alert(e)
         }
     })
 }
@@ -326,7 +326,7 @@ function SaveRequestCallBack() {
             ResetAdvisor(), window.location.href = e
         },
         error: function(e) {
-            alert(e)
+            //alert(e)
         }
     })
 }
@@ -374,7 +374,7 @@ function SaveClaimIntimationMotor() {
             l = l.replace("$Name$", $("#txtFirstName").val()).replace("$Motor$", "Motor").replace("$ReferenceNo$", t[1]), SendServicesms($("#txtMobileNo").val(), l), ResetMotor(), window.location.href = "/general-insurance/" + t[0]
         },
         error: function(e) {
-            alert(e)
+            //alert(e)
         }
     })
 }
@@ -421,7 +421,7 @@ function SaveClaimIntimationNonMotor() {
             l = l.replace("$Name$", $("#txtFirstName").val()).replace("$Motor$", "Other").replace("$ReferenceNo$", t[1]), SendServicesms($("#txtMobileNo").val(), l), ResetMotor(), ResetHealth(), window.location.href = "/general-insurance/" + t[0]
         },
         error: function(e) {
-            alert(e)
+            //alert(e)
         }
     })
 }
@@ -471,7 +471,7 @@ function SaveClaimIntimationHealth() {
             l = l.replace("$Name$", $("#txtNameOfPatient").val()).replace("$Motor$", "Health").replace("$ReferenceNo$", t[1]), SendServicesms($("#txtMobileNo").val(), l), ResetHealth(), window.location.href = "/general-insurance/" + t[0]
         },
         error: function(e) {
-            alert(e)
+            //alert(e)
         }
     })
 }
@@ -515,7 +515,7 @@ function SaveClaimIntimationPA() {
             l = l.replace("$Name$", $("#txtNameOfPatient").val()).replace("$Motor$", "Accident").replace("$ReferenceNo$", t[1]), SendServicesms($("#txtMobileNo").val(), l), ResetHealth(), window.location.href = "/general-insurance/" + t[0]
         },
         error: function(e) {
-            alert(e)
+            //alert(e)
         }
     })
 }
@@ -559,7 +559,7 @@ function SaveClaimIntimationTravel() {
             l = l.replace("$Name$", $("#txtNameOfInsured").val()).replace("$Motor$", "Travel").replace("$ReferenceNo$", t[1]), SendServicesms($("#txtMobileNo").val(), l), ResetTravel(), window.location.href = "/general-insurance/" + t[0]
         },
         error: function(e) {
-            alert(e)
+            //alert(e)
         }
     })
 }
@@ -610,7 +610,7 @@ function SaveJobPostingResume() {
             ResetAdvisor(), window.location.href = e
         },
         error: function(e) {
-            alert(e)
+            //alert(e)
         }
     })
 }
@@ -656,7 +656,7 @@ function SaveComplaintFeedback() {
             ResetAdvisor(), window.location.href = e
         },
         error: function(e) {
-            alert(e)
+            //alert(e)
         }
     })
 }
@@ -671,10 +671,10 @@ function email() {
             sAction: "SendMail"
         },
         success: function(e) {
-            alert(e)
+            //alert(e)
         },
         error: function(e) {
-            alert(e)
+            //alert(e)
         }
     })
 }
@@ -698,7 +698,7 @@ function onlyAlphabets(e, t) {
         }
         if (8 != l && 0 != l) return l > 64 && l < 91 || l > 96 && l < 123 || 32 == l
     } catch (e) {
-        alert(e.Description)
+        //alert(e.Description)
     }
 }
 dd < 10 && (dd = "0" + dd), mm < 10 && (mm = "0" + mm), today = dd + "/" + mm + "/" + yyyy, $(document).ready(function() {

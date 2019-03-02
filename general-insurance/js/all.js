@@ -223,30 +223,30 @@ function(t) {
 }(jQuery),
 function(t) {
     "use strict";
-    var e = '[data-dismiss="alert"]',
+    var e = '[data-dismiss="//alert"]',
         i = function(i) {
             t(i).on("click", e, this.close)
         };
     i.VERSION = "3.3.4", i.TRANSITION_DURATION = 150, i.prototype.close = function(e) {
         function a() {
-            o.detach().trigger("closed.bs.alert").remove()
+            o.detach().trigger("closed.bs.//alert").remove()
         }
         var s = t(this),
             n = s.attr("data-target");
         n || (n = (n = s.attr("href")) && n.replace(/.*(?=#[^\s]*$)/, ""));
         var o = t(n);
-        e && e.preventDefault(), o.length || (o = s.closest(".alert")), o.trigger(e = t.Event("close.bs.alert")), e.isDefaultPrevented() || (o.removeClass("in"), t.support.transition && o.hasClass("fade") ? o.one("bsTransitionEnd", a).emulateTransitionEnd(i.TRANSITION_DURATION) : a())
+        e && e.preventDefault(), o.length || (o = s.closest(".//alert")), o.trigger(e = t.Event("close.bs.//alert")), e.isDefaultPrevented() || (o.removeClass("in"), t.support.transition && o.hasClass("fade") ? o.one("bsTransitionEnd", a).emulateTransitionEnd(i.TRANSITION_DURATION) : a())
     };
-    var a = t.fn.alert;
-    t.fn.alert = function(e) {
+    var a = t.fn.//alert;
+    t.fn.//alert = function(e) {
         return this.each(function() {
             var a = t(this),
-                s = a.data("bs.alert");
-            s || a.data("bs.alert", s = new i(this)), "string" == typeof e && s[e].call(a)
+                s = a.data("bs.//alert");
+            s || a.data("bs.//alert", s = new i(this)), "string" == typeof e && s[e].call(a)
         })
-    }, t.fn.alert.Constructor = i, t.fn.alert.noConflict = function() {
-        return t.fn.alert = a, this
-    }, t(document).on("click.bs.alert.data-api", e, i.prototype.close)
+    }, t.fn.//alert.Constructor = i, t.fn.//alert.noConflict = function() {
+        return t.fn.//alert = a, this
+    }, t(document).on("click.bs.//alert.data-api", e, i.prototype.close)
 }(jQuery),
 function(t) {
     "use strict";

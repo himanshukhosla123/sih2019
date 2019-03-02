@@ -13,7 +13,7 @@ function BuyOnline(a) {
             void 0 != e.sUrl && window.open(e.sUrl, "_blank")
         },
         error: function(a) {
-            alert(a)
+            //alert(a)
         }
     })
 }
@@ -43,7 +43,7 @@ function searchC(a, e, n) {
             } else $("#searchcontent").html("No result found"), $("#divPagination").hide()
         },
         error: function(a) {
-            alert(a)
+            //alert(a)
         }
     })
 }
@@ -57,7 +57,7 @@ function onlyAlphabets(a, e) {
         }
         if (8 != n && 0 != n) return n > 64 && n < 91 || n > 96 && n < 123 || 32 == n
     } catch (a) {
-        alert(a.Description)
+        //alert(a.Description)
     }
 }
 
@@ -128,7 +128,7 @@ $("#CallMeSubmit").click(function() {
             $("#CallmeName").html(a), $("#InputCallMeName").val(""), $("#InputCallMeContact").val(""), $("#InputCallMeEmail").val(""), $(".divchkmsg").hide(), $("#left-menu-container").css("height", "235px"), $("#divcallmeMsg").show()
         },
         error: function(a) {
-            alert(a)
+            //alert(a)
         }
     })
 }), $("#AgiveCall").click(function() {
@@ -154,7 +154,7 @@ $("#CallMeSubmit").click(function() {
             $("#FooterText").val(""), $("#placeholderlast1").show(), $("#placeholderlast").hide()
         },
         error: function(a) {
-            alert(a)
+            //alert(a)
         }
     })
 }), $(document).ready(function() {

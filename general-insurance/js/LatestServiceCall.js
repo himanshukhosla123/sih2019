@@ -127,7 +127,7 @@ function BuyOnline(Product) {
             }
         },
         error: function(result) {
-            alert(result);
+            //alert(result);
         }
     });
 }
@@ -381,7 +381,7 @@ function LoadArticleContent(iID) {
             DivTitle.innerHTML = obj.sTitles.replace(/&fs/g, "/").replace(/&quot;/g, "\"");
         },
         error: function(result) {
-            alert(result);
+            //alert(result);
         }
     });
 }
@@ -434,7 +434,7 @@ function LoadProductContent(iID) {
             Testimonial3.innerHTML = obj.sTestimonials3.replace(/&fs/g, "/").replace(/&quot;/g, "\"");
         },
         error: function(result) {
-            alert(result);
+            //alert(result);
         }
     });
 }
@@ -465,7 +465,7 @@ function LoadCProductContent(iID) {
             DivBreadCrumb.innerHTML = DivBreadCrumb.innerHTML.replace("#sBreadcrumb#", obj.sBreadCrumb.replace(/&fs/g, "/").replace(/&quot;/g, "\""));
         },
         error: function(result) {
-            alert(result);
+            //alert(result);
         }
     });
 }
@@ -494,7 +494,7 @@ function LoadCategoryContent(iID) {
             DivArticles.innerHTML = obj.sArticles.replace(/&fs/g, "/").replace(/&quot;/g, "\"");
         },
         error: function(result) {
-            alert(result);
+            //alert(result);
         }
     });
 }
@@ -520,7 +520,7 @@ function LoadCCategoryContent(iID) {
             DivArticles.innerHTML = DivArticles.innerHTML.replace(/#sArticles#/g, obj.sArticles.replace(/&fs/g, "/").replace(/&quot;/g, "\""));
         },
         error: function(result) {
-            alert(result);
+            //alert(result);
         }
     });
 }
@@ -579,7 +579,7 @@ function searchC(sKeyword, pageNo, rowNo) {
             }
         },
         error: function(result) {
-            alert(result);
+            //alert(result);
         }
     });
 }
@@ -651,7 +651,7 @@ $(document).ready(function() {
                     }
                 },
                 error: function(result) {
-                    alert(result);
+                    //alert(result);
                 }
             });
         }
@@ -752,7 +752,7 @@ $(document).ready(function() {
                     $("#divcallmeMsg").show();
                 },
                 error: function(result) {
-                    alert(result);
+                    //alert(result);
                 }
             });
         } else {
@@ -800,7 +800,7 @@ $(document).ready(function() {
                 $("#placeholderlast").hide();
             },
             error: function(result) {
-                alert(result);
+                //alert(result);
             }
         });
     });
@@ -845,7 +845,7 @@ $(document).ready(function() {
                 DivTopUpPlan.innerHTML = obj.sTopup;
             },
             error: function(result) {
-                alert(result);
+                //alert(result);
             }
         });
         $('#DivTopupplanpolicy').show();
@@ -967,7 +967,7 @@ $(document).ready(function() {
                 DivHospiCash.innerHTML = obj.sHospicash;
             },
             error: function(result) {
-                alert(result);
+                //alert(result);
             }
         });
     });

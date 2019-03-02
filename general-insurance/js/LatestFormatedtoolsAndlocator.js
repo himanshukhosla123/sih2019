@@ -58,7 +58,7 @@ function insertCallMeData(t) {
             e = 0 < t.indexOf("Database error") ? "Try after some time" : "success" == t ? "Will call you soon" : "Try after some time", document.getElementById("modal-body-msg").innerHTML = e, $("#callme").modal("show"), isfooterCallMe ? ($("#exampleInputAmount").val(""), isfooterCallMe = !1) : ($("#txtcallme").val(""), $(".close-menu").trigger("click"))
         },
         error: function(t) {
-            alert("fn insertCallMeData " + t)
+            //alert("fn insertCallMeData " + t)
         }
     })
 }
@@ -121,7 +121,7 @@ function getLatLonDetailDisplayGoogleMap(t, e, a, s) {
 
 function showAddress(t) {
     var e = document.getElementById("map");
-    e.clearOverlays(), t && 200 == t.Status.code ? (place = t.Placemark[0], point = new GLatLng(place.Point.coordinates[1], place.Point.coordinates[0]), marker = new GMarker(point), e.addOverlay(marker), marker.openInfoWindowHtml("<b>orig latlng:</b>" + t.name + "<br/><b>latlng:</b>" + place.Point.coordinates[1] + "," + place.Point.coordinates[0] + "<br><b>Status Code:</b>" + t.Status.code + "<br><b>Status Request:</b>" + t.Status.request + "<br><b>Address:</b>" + place.address + "<br><b>Accuracy:</b>" + place.AddressDetails.Accuracy + "<br><b>Country code:</b> " + place.AddressDetails.Country.CountryNameCode)) : alert("Status Code:" + t.Status.code)
+    e.clearOverlays(), t && 200 == t.Status.code ? (place = t.Placemark[0], point = new GLatLng(place.Point.coordinates[1], place.Point.coordinates[0]), marker = new GMarker(point), e.addOverlay(marker), marker.openInfoWindowHtml("<b>orig latlng:</b>" + t.name + "<br/><b>latlng:</b>" + place.Point.coordinates[1] + "," + place.Point.coordinates[0] + "<br><b>Status Code:</b>" + t.Status.code + "<br><b>Status Request:</b>" + t.Status.request + "<br><b>Address:</b>" + place.address + "<br><b>Accuracy:</b>" + place.AddressDetails.Accuracy + "<br><b>Country code:</b> " + place.AddressDetails.Country.CountryNameCode)) : //alert("Status Code:" + t.Status.code)
 }
 
 function paginingNo(t, e, a, s, n) {
@@ -174,7 +174,7 @@ function PopCityAccStateForLoc(t) {
             module: t
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t);
+            0 < t.indexOf("Database error") && //alert(t);
             try {
                 var e = $.parseJSON(t);
                 $("#ddlcity").empty().append($("<option></option>").val("0").html("Please select city"));
@@ -184,7 +184,7 @@ function PopCityAccStateForLoc(t) {
             }
         },
         error: function(t) {
-            alert("fn PopCityAccState " + t)
+            //alert("fn PopCityAccState " + t)
         }
     })
 }
@@ -259,7 +259,7 @@ function fillStateAndCityAndHopitalList() {
         },
         success: function(t) {
             var e = 0;
-            if (0 < t.indexOf("Database error")) alert(t);
+            if (0 < t.indexOf("Database error")) //alert(t);
             else {
                 HospitalJson = $.parseJSON(t), $("#ddlstate").empty().append($("<option></option>").val("0").html("Please select state"));
                 for (var a = 0; a < HospitalJson.statelist.length; a++) "Yes" == HospitalJson.statelist[a].isSameState && (e = 21), $("#ddlstate").append($("<option></option>").val("" + HospitalJson.statelist[a].sId).html("" + HospitalJson.statelist[a].stateN));
@@ -272,7 +272,7 @@ function fillStateAndCityAndHopitalList() {
             }
         },
         error: function(t) {
-            alert("fn fillStateAndCityAndHopitalList " + t)
+            //alert("fn fillStateAndCityAndHopitalList " + t)
         }
     })
 }
@@ -285,7 +285,7 @@ function fillStateAndCityAndDiagnosticCenters() {
             sAction: "fillStateAndCityAndDiagnosticCenters"
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t);
+            0 < t.indexOf("Database error") && //alert(t);
             var e = 0;
             if (0 < t.indexOf("%$")) {
                 var a;
@@ -307,14 +307,14 @@ function fillStateAndCityAndDiagnosticCenters() {
             }
         },
         error: function(t) {
-            alert("fn fillStateAndCityAndDiagnosticCenters " + t)
+            //alert("fn fillStateAndCityAndDiagnosticCenters " + t)
         }
     })
 }
 
 function SearchByNetworkHospital(e) {
     var t = $("#HospitalName").val();
-    "" == t ? alert("Please enter hospital name") : $.ajax({
+    "" == t ? //alert("Please enter hospital name") : $.ajax({
         url: "/general-insurance/Services/getData.ashx",
         contentType: "application/json; charset=utf-8",
         data: {
@@ -326,11 +326,11 @@ function SearchByNetworkHospital(e) {
             hospitalname: t
         },
         success: function(t) {
-            if (0 < t.indexOf("Database error") && alert(t), "" == t) return document.getElementById("idNetHosp").innerHTML = "No Record Found", $("#divPagination").hide(), !1;
+            if (0 < t.indexOf("Database error") && //alert(t), "" == t) return document.getElementById("idNetHosp").innerHTML = "No Record Found", $("#divPagination").hide(), !1;
             0 == (HospitalJson = $.parseJSON(t)).NetHosp.length || (populateHospital(), getLatLonDetailDisplayGoogleMap(mapAddress, smsTitle, mapLatitude, mapLongitude), paginingNo(totHospital, e, 4, 10, "divPagination"))
         },
         error: function(t) {
-            alert("fn getHospitalAccPage " + t)
+            //alert("fn getHospitalAccPage " + t)
         }
     })
 }
@@ -362,10 +362,10 @@ function getHospitalAccPage(t, e, a, s) {
             rowNo: s
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t), 0 == (HospitalJson = $.parseJSON(t)).NetHosp.length || (populateHospital(), getLatLonDetailDisplayGoogleMap(mapAddress, smsTitle, mapLatitude, mapLongitude), paginingNo(totHospital, a, s, 10, "divPagination"))
+            0 < t.indexOf("Database error") && //alert(t), 0 == (HospitalJson = $.parseJSON(t)).NetHosp.length || (populateHospital(), getLatLonDetailDisplayGoogleMap(mapAddress, smsTitle, mapLatitude, mapLongitude), paginingNo(totHospital, a, s, 10, "divPagination"))
         },
         error: function(t) {
-            alert("fn getHospitalAccPage " + t)
+            //alert("fn getHospitalAccPage " + t)
         }
     })
 }
@@ -382,10 +382,10 @@ function getDiagnosticCentersAccPage(t, e, a, s) {
             rowNo: s
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t), 0 == (DiagnoJson = $.parseJSON(t)).DiagnosticList.length || (populateDiagnosticCenters(), getLatLonDetailDisplayGoogleMap(mapAddress, smsTitle, mapLatitude, mapLongitude), paginingNo(totDiag, a, s, 10, "divPagination"))
+            0 < t.indexOf("Database error") && //alert(t), 0 == (DiagnoJson = $.parseJSON(t)).DiagnosticList.length || (populateDiagnosticCenters(), getLatLonDetailDisplayGoogleMap(mapAddress, smsTitle, mapLatitude, mapLongitude), paginingNo(totDiag, a, s, 10, "divPagination"))
         },
         error: function(t) {
-            alert("fn getDiagnosticCentersAccPage " + t)
+            //alert("fn getDiagnosticCentersAccPage " + t)
         }
     })
 }
@@ -399,7 +399,7 @@ function fillStateAndCityAndGarageList() {
             sAction: "fillStateAndCityAndGarageList"
         },
         success: function(t) {
-            if (0 < t.indexOf("Database error")) alert(t);
+            if (0 < t.indexOf("Database error")) //alert(t);
             else {
                 GarageJson = $.parseJSON(t), $("#ddlstate").empty().append($("<option></option>").val("0").html("Please select state"));
                 for (var e = 0; e < GarageJson.statelist.length; e++) GarageJson.statelist[e].isSameState, $("#ddlstate").append($("<option></option>").val("" + GarageJson.statelist[e].sId).html("" + GarageJson.statelist[e].stateN));
@@ -412,7 +412,7 @@ function fillStateAndCityAndGarageList() {
             }
         },
         error: function(t) {
-            alert("fn fillStateAndCityAndGarageList " + t)
+            //alert("fn fillStateAndCityAndGarageList " + t)
         }
     })
 }
@@ -444,10 +444,10 @@ function getGarageAccPage(t, e, a, s) {
             rowNo: s
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t), 0 == (GarageJson = $.parseJSON(t)).GarageList.length ? (document.getElementById("idGarageList").innerHTML = "No Record Found", $("#divPagination").hide()) : (populateGarage(), getLatLonDetailDisplayGoogleMap(mapAddress, smsTitle, mapLatitude, mapLongitude), $("#divPagination").show(), paginingNo(totGarage, a, s, 10, "divPagination"))
+            0 < t.indexOf("Database error") && //alert(t), 0 == (GarageJson = $.parseJSON(t)).GarageList.length ? (document.getElementById("idGarageList").innerHTML = "No Record Found", $("#divPagination").hide()) : (populateGarage(), getLatLonDetailDisplayGoogleMap(mapAddress, smsTitle, mapLatitude, mapLongitude), $("#divPagination").show(), paginingNo(totGarage, a, s, 10, "divPagination"))
         },
         error: function(t) {
-            alert("fn getGarageAccPage " + t)
+            //alert("fn getGarageAccPage " + t)
         }
     })
 }
@@ -466,10 +466,10 @@ function getGarageBaseOnMakeAndShopName(t, e, a, s, n, i) {
             cityId: i
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t), 0 == (GarageJson = $.parseJSON(t)).GarageList.length ? (document.getElementById("idGarageList").innerHTML = "No Record Found", $("#divPagination").hide()) : (populateGarage(), getLatLonDetailDisplayGoogleMap(mapAddress, smsTitle, mapLatitude, mapLongitude), $("#divPagination").show(), paginingNo(totGarage, a, s, 10, "divPagination"), backtotoppage())
+            0 < t.indexOf("Database error") && //alert(t), 0 == (GarageJson = $.parseJSON(t)).GarageList.length ? (document.getElementById("idGarageList").innerHTML = "No Record Found", $("#divPagination").hide()) : (populateGarage(), getLatLonDetailDisplayGoogleMap(mapAddress, smsTitle, mapLatitude, mapLongitude), $("#divPagination").show(), paginingNo(totGarage, a, s, 10, "divPagination"), backtotoppage())
         },
         error: function(t) {
-            alert("fn getGarageAccPage " + t)
+            //alert("fn getGarageAccPage " + t)
         }
     })
 }
@@ -495,7 +495,7 @@ function PopCityAccStateForAgent() {
             iagnType: iagnType
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t);
+            0 < t.indexOf("Database error") && //alert(t);
             try {
                 var e = $.parseJSON(t);
                 $("#ddlcity").empty().append($("<option></option>").val("0").html("Please select city"));
@@ -505,7 +505,7 @@ function PopCityAccStateForAgent() {
             }
         },
         error: function(t) {
-            alert("fn PopCityAccState " + t)
+            //alert("fn PopCityAccState " + t)
         }
     })
 }
@@ -543,7 +543,7 @@ function fillStateAndCityAndSuspectedFraud() {
             sAction: "fillStateAndCityAndSuspectedFraud"
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t);
+            0 < t.indexOf("Database error") && //alert(t);
             var e = 0;
             if (0 < t.indexOf("%$")) {
                 var a;
@@ -565,7 +565,7 @@ function fillStateAndCityAndSuspectedFraud() {
             }
         },
         error: function(t) {
-            alert("fn fillStateAndCityAndSuspectedFraud " + t)
+            //alert("fn fillStateAndCityAndSuspectedFraud " + t)
         }
     })
 }
@@ -582,10 +582,10 @@ function getSuspectedFraudAccPage(t, e, a, s) {
             rowNo: s
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t), SuspectJson = $.parseJSON(t), 0 == SuspectJson.SuspectedList.length || (populateSuspectedFraud(), getLatLonDetailDisplayGoogleMap(mapAddress, smsTitle, mapLatitude, mapLongitude), paginingNo(totSus, a, s, 10, "divPagination"))
+            0 < t.indexOf("Database error") && //alert(t), SuspectJson = $.parseJSON(t), 0 == SuspectJson.SuspectedList.length || (populateSuspectedFraud(), getLatLonDetailDisplayGoogleMap(mapAddress, smsTitle, mapLatitude, mapLongitude), paginingNo(totSus, a, s, 10, "divPagination"))
         },
         error: function(t) {
-            alert("fn getSuspectedFraudAccPage " + t)
+            //alert("fn getSuspectedFraudAccPage " + t)
         }
     })
 }
@@ -613,7 +613,7 @@ function fillStateAndCityAndBLHospitals() {
             sAction: "fillStateAndCityAndBLHospitals"
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t);
+            0 < t.indexOf("Database error") && //alert(t);
             var e = 0;
             if (0 < t.indexOf("%$")) {
                 var a;
@@ -635,7 +635,7 @@ function fillStateAndCityAndBLHospitals() {
             }
         },
         error: function(t) {
-            alert("fn fillStateAndCityAndBLHospitals " + t)
+            //alert("fn fillStateAndCityAndBLHospitals " + t)
         }
     })
 }
@@ -652,10 +652,10 @@ function getBLHospitalsAccPage(t, e, a, s) {
             rowNo: s
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t), 0 == (BLHJson = $.parseJSON(t)).BLHList.length || (populateBLHospitals(), getLatLonDetailDisplayGoogleMap(mapAddress, smsTitle, mapLatitude, mapLongitude), paginingNo(totBLH, a, s, 10, "divPagination"))
+            0 < t.indexOf("Database error") && //alert(t), 0 == (BLHJson = $.parseJSON(t)).BLHList.length || (populateBLHospitals(), getLatLonDetailDisplayGoogleMap(mapAddress, smsTitle, mapLatitude, mapLongitude), paginingNo(totBLH, a, s, 10, "divPagination"))
         },
         error: function(t) {
-            alert("fn getBLHospitalsAccPage" + t)
+            //alert("fn getBLHospitalsAccPage" + t)
         }
     })
 }
@@ -722,12 +722,12 @@ function getAgentAccFilter(t, e, a, s, n) {
             iAgentType: n
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t);
+            0 < t.indexOf("Database error") && //alert(t);
             var e = $.parseJSON(t);
             1 == n ? 0 == e.InvAgentList.length ? (document.getElementById("divLeftSideInvAgent").innerHTML = "", document.getElementById("divRightSideInvAgent").innerHTML = "", $("#divInvAgentPagination").hide()) : (populateIndividualAgent(e), paginingNo(totInvAgentCount, a, s, 10, "divInvAgentPagination")) : 0 == e.CorpAgentList.length ? (document.getElementById("divLeftSideCorpAgent").innerHTML = "", document.getElementById("divRightSideCorpAgent").innerHTML = "", $("#divCorpAgentPagination").hide()) : (populateCorpAgent(e), paginingNo(totCorpAgentCount, a, s, 10, "divCorpAgentPagination"))
         },
         error: function(t) {
-            alert("fn getBranchAccPage " + t)
+            //alert("fn getBranchAccPage " + t)
         }
     })
 }
@@ -748,12 +748,12 @@ function getAgentBaseOnSearch(t, e, a, s, n, i, o, l) {
             agentCode: l
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t);
+            0 < t.indexOf("Database error") && //alert(t);
             var e = $.parseJSON(t);
             1 == n ? 0 == e.InvAgentList.length ? (document.getElementById("divInvDisplaysss").innerHTML = "No Result Found", $("#tblProfile").hide(), $(".Left-update").hide(), $("#divInvAgentPagination").hide()) : (populateIndividualAgent(e), paginingNo(totInvAgentCount, a, s, 10, "divInvAgentPagination"), $("#divShowInvAge").show()) : 0 == e.CorpAgentList.length ? (document.getElementById("divLeftSideCorpAgent").innerHTML = "", document.getElementById("divRightSideCorpAgent").innerHTML = "", $("#divCorpAgentPagination").hide()) : (populateCorpAgent(e), paginingNo(totCorpAgentCount, a, s, 10, "divCorpAgentPagination"))
         },
         error: function(t) {
-            alert("fn getBranchAccPage " + t)
+            //alert("fn getBranchAccPage " + t)
         }
     })
 }
@@ -768,10 +768,10 @@ function fillSecurityAndStewardshipPolicy() {
         },
         success: function(t) {
             var e, a = (e = window.location.href.toString().split("/"))[e.length - 1];
-            0 < t.indexOf("Database error") && alert(t), SecurityJson = $.parseJSON(t), "information-and-cyber-security-policy" == a && (populateSecurityPolicy(SecurityJson), $("#tabs-1").show(), $("#tabs-2").hide(), $("#tabs-3").hide(), $("#tabs-4").hide()), "stewardship-policy" == a && (populatestewardshipPolicy(SecurityJson), $("#tabs-1").hide(), $("#tabs-2").show(), $("#tabs-3").hide(), $("#tabs-4").hide()), "whistle-blower-policy" == a && (populateWhistleBlowingPolicy(SecurityJson), $("#tabs-1").hide(), $("#tabs-2").hide(), $("#tabs-3").show(), $("#tabs-4").hide()), "anti-fraud-policy" == a && (populateAntiFraudPolicy(SecurityJson), $("#tabs-1").hide(), $("#tabs-2").hide(), $("#tabs-3").hide(), $("#tabs-4").show())
+            0 < t.indexOf("Database error") && //alert(t), SecurityJson = $.parseJSON(t), "information-and-cyber-security-policy" == a && (populateSecurityPolicy(SecurityJson), $("#tabs-1").show(), $("#tabs-2").hide(), $("#tabs-3").hide(), $("#tabs-4").hide()), "stewardship-policy" == a && (populatestewardshipPolicy(SecurityJson), $("#tabs-1").hide(), $("#tabs-2").show(), $("#tabs-3").hide(), $("#tabs-4").hide()), "whistle-blower-policy" == a && (populateWhistleBlowingPolicy(SecurityJson), $("#tabs-1").hide(), $("#tabs-2").hide(), $("#tabs-3").show(), $("#tabs-4").hide()), "anti-fraud-policy" == a && (populateAntiFraudPolicy(SecurityJson), $("#tabs-1").hide(), $("#tabs-2").hide(), $("#tabs-3").hide(), $("#tabs-4").show())
         },
         error: function(t) {
-            alert("fn fillSecurityAndStewardshipPolicy " + t)
+            //alert("fn fillSecurityAndStewardshipPolicy " + t)
         }
     })
 }
@@ -784,7 +784,7 @@ function fillStateAndCityAndBranch() {
             sAction: "fillStateAndCityAndBranch"
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t);
+            0 < t.indexOf("Database error") && //alert(t);
             var e = 0;
             if (0 < t.indexOf("%$")) {
                 var a;
@@ -806,7 +806,7 @@ function fillStateAndCityAndBranch() {
             }
         },
         error: function(t) {
-            alert("fn fillStateAndCityAndBranch " + t)
+            //alert("fn fillStateAndCityAndBranch " + t)
         }
     })
 }
@@ -823,10 +823,10 @@ function getBranchAccPage(t, e, a, s) {
             rowNo: s
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t), 0 == (BranchJson = $.parseJSON(t)).BranchList.length || (41 == e && (iscity = !0), populateBranch(), paginingNo(totBranch, a, s, 10, "divPagination"), backtotoppage(), getLatLonDetailDisplayGoogleMap(mapAddress, smsTitle, mapLatitude, mapLongitude))
+            0 < t.indexOf("Database error") && //alert(t), 0 == (BranchJson = $.parseJSON(t)).BranchList.length || (41 == e && (iscity = !0), populateBranch(), paginingNo(totBranch, a, s, 10, "divPagination"), backtotoppage(), getLatLonDetailDisplayGoogleMap(mapAddress, smsTitle, mapLatitude, mapLongitude))
         },
         error: function(t) {
-            alert("fn getBranchAccPage " + t)
+            //alert("fn getBranchAccPage " + t)
         }
     })
 }
@@ -882,7 +882,7 @@ function getPressCoverageList() {
         },
         success: function(t) {
             var e = "";
-            0 < t.indexOf("Database error") && alert(t);
+            0 < t.indexOf("Database error") && //alert(t);
             try {
                 var a = $.parseJSON(t);
                 $("#ddlyear").empty();
@@ -896,7 +896,7 @@ function getPressCoverageList() {
             "" != e && displayYear(e)
         },
         error: function(t) {
-            alert("fn getPressReleaseList " + t)
+            //alert("fn getPressReleaseList " + t)
         }
     })
 }
@@ -919,7 +919,7 @@ function getPCAccYear(t, s, e) {
             year: t
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t);
+            0 < t.indexOf("Database error") && //alert(t);
             try {
                 var e = $.parseJSON(t);
                 displayListOfPr(e, "pc");
@@ -928,7 +928,7 @@ function getPCAccYear(t, s, e) {
             } catch (t) {}
         },
         error: function(t) {
-            alert("fn getPCAccYear " + t)
+            //alert("fn getPCAccYear " + t)
         }
     })
 }
@@ -945,14 +945,14 @@ function getPRAccYear(t) {
             year: t
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t);
+            0 < t.indexOf("Database error") && //alert(t);
             try {
                 var e = $.parseJSON(t);
                 displayListOfPr(e, "pr")
             } catch (t) {}
         },
         error: function(t) {
-            alert("fn getPRAccYear " + t)
+            //alert("fn getPRAccYear " + t)
         }
     })
 }
@@ -970,7 +970,7 @@ function getPressReleaseList() {
         },
         success: function(t) {
             var e;
-            0 < t.indexOf("Database error") && alert(t);
+            0 < t.indexOf("Database error") && //alert(t);
             try {
                 var a = $.parseJSON(t);
                 $("#ddlyear").empty();
@@ -982,7 +982,7 @@ function getPressReleaseList() {
             displayYear(e)
         },
         error: function(t) {
-            alert("fn getPressReleaseList " + t)
+            //alert("fn getPressReleaseList " + t)
         }
     })
 }
@@ -1149,7 +1149,7 @@ function insertCallMeData(t) {
             e = 0 < t.indexOf("Database error") ? "Try after some time" : "success" == t ? "Will call you soon" : "Try after some time", document.getElementById("modal-body-msg").innerHTML = e, $("#callme").modal("show"), isfooterCallMe ? ($("#exampleInputAmount").val(""), isfooterCallMe = !1) : ($("#txtcallme").val(""), $(".close-menu").trigger("click"))
         },
         error: function(t) {
-            alert("fn insertCallMeData " + t)
+            //alert("fn insertCallMeData " + t)
         }
     })
 }
@@ -1212,7 +1212,7 @@ function getLatLonDetailDisplayGoogleMap(t, e, a, s) {
 
 function showAddress(t) {
     var e = document.getElementById("map");
-    e.clearOverlays(), t && 200 == t.Status.code ? (place = t.Placemark[0], point = new GLatLng(place.Point.coordinates[1], place.Point.coordinates[0]), marker = new GMarker(point), e.addOverlay(marker), marker.openInfoWindowHtml("<b>orig latlng:</b>" + t.name + "<br/><b>latlng:</b>" + place.Point.coordinates[1] + "," + place.Point.coordinates[0] + "<br><b>Status Code:</b>" + t.Status.code + "<br><b>Status Request:</b>" + t.Status.request + "<br><b>Address:</b>" + place.address + "<br><b>Accuracy:</b>" + place.AddressDetails.Accuracy + "<br><b>Country code:</b> " + place.AddressDetails.Country.CountryNameCode)) : alert("Status Code:" + t.Status.code)
+    e.clearOverlays(), t && 200 == t.Status.code ? (place = t.Placemark[0], point = new GLatLng(place.Point.coordinates[1], place.Point.coordinates[0]), marker = new GMarker(point), e.addOverlay(marker), marker.openInfoWindowHtml("<b>orig latlng:</b>" + t.name + "<br/><b>latlng:</b>" + place.Point.coordinates[1] + "," + place.Point.coordinates[0] + "<br><b>Status Code:</b>" + t.Status.code + "<br><b>Status Request:</b>" + t.Status.request + "<br><b>Address:</b>" + place.address + "<br><b>Accuracy:</b>" + place.AddressDetails.Accuracy + "<br><b>Country code:</b> " + place.AddressDetails.Country.CountryNameCode)) : //alert("Status Code:" + t.Status.code)
 }
 
 function paginingNo(t, e, a, s, n) {
@@ -1265,7 +1265,7 @@ function PopCityAccStateForLoc(t) {
             module: t
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t);
+            0 < t.indexOf("Database error") && //alert(t);
             try {
                 var e = $.parseJSON(t);
                 $("#ddlcity").empty().append($("<option></option>").val("0").html("Please select city"));
@@ -1275,7 +1275,7 @@ function PopCityAccStateForLoc(t) {
             }
         },
         error: function(t) {
-            alert("fn PopCityAccState " + t)
+            //alert("fn PopCityAccState " + t)
         }
     })
 }
@@ -1350,7 +1350,7 @@ function fillStateAndCityAndHopitalList() {
         },
         success: function(t) {
             var e = 0;
-            if (0 < t.indexOf("Database error")) alert(t);
+            if (0 < t.indexOf("Database error")) //alert(t);
             else {
                 HospitalJson = $.parseJSON(t), $("#ddlstate").empty().append($("<option></option>").val("0").html("Please select state"));
                 for (var a = 0; a < HospitalJson.statelist.length; a++) "Yes" == HospitalJson.statelist[a].isSameState && (e = 21), $("#ddlstate").append($("<option></option>").val("" + HospitalJson.statelist[a].sId).html("" + HospitalJson.statelist[a].stateN));
@@ -1363,7 +1363,7 @@ function fillStateAndCityAndHopitalList() {
             }
         },
         error: function(t) {
-            alert("fn fillStateAndCityAndHopitalList " + t)
+            //alert("fn fillStateAndCityAndHopitalList " + t)
         }
     })
 }
@@ -1376,7 +1376,7 @@ function fillStateAndCityAndDiagnosticCenters() {
             sAction: "fillStateAndCityAndDiagnosticCenters"
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t);
+            0 < t.indexOf("Database error") && //alert(t);
             var e = 0;
             if (0 < t.indexOf("%$")) {
                 var a;
@@ -1398,14 +1398,14 @@ function fillStateAndCityAndDiagnosticCenters() {
             }
         },
         error: function(t) {
-            alert("fn fillStateAndCityAndDiagnosticCenters " + t)
+            //alert("fn fillStateAndCityAndDiagnosticCenters " + t)
         }
     })
 }
 
 function SearchByNetworkHospital(e) {
     var t = $("#HospitalName").val();
-    "" == t ? alert("Please enter hospital name") : $.ajax({
+    "" == t ? //alert("Please enter hospital name") : $.ajax({
         url: "/general-insurance/Services/getData.ashx",
         contentType: "application/json; charset=utf-8",
         data: {
@@ -1417,11 +1417,11 @@ function SearchByNetworkHospital(e) {
             hospitalname: t
         },
         success: function(t) {
-            if (0 < t.indexOf("Database error") && alert(t), "" == t) return document.getElementById("idNetHosp").innerHTML = "No Record Found", $("#divPagination").hide(), !1;
+            if (0 < t.indexOf("Database error") && //alert(t), "" == t) return document.getElementById("idNetHosp").innerHTML = "No Record Found", $("#divPagination").hide(), !1;
             0 == (HospitalJson = $.parseJSON(t)).NetHosp.length || (populateHospital(), getLatLonDetailDisplayGoogleMap(mapAddress, smsTitle, mapLatitude, mapLongitude), paginingNo(totHospital, e, 4, 10, "divPagination"))
         },
         error: function(t) {
-            alert("fn getHospitalAccPage " + t)
+            //alert("fn getHospitalAccPage " + t)
         }
     })
 }
@@ -1453,10 +1453,10 @@ function getHospitalAccPage(t, e, a, s) {
             rowNo: s
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t), 0 == (HospitalJson = $.parseJSON(t)).NetHosp.length || (populateHospital(), getLatLonDetailDisplayGoogleMap(mapAddress, smsTitle, mapLatitude, mapLongitude), paginingNo(totHospital, a, s, 10, "divPagination"))
+            0 < t.indexOf("Database error") && //alert(t), 0 == (HospitalJson = $.parseJSON(t)).NetHosp.length || (populateHospital(), getLatLonDetailDisplayGoogleMap(mapAddress, smsTitle, mapLatitude, mapLongitude), paginingNo(totHospital, a, s, 10, "divPagination"))
         },
         error: function(t) {
-            alert("fn getHospitalAccPage " + t)
+            //alert("fn getHospitalAccPage " + t)
         }
     })
 }
@@ -1473,10 +1473,10 @@ function getDiagnosticCentersAccPage(t, e, a, s) {
             rowNo: s
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t), 0 == (DiagnoJson = $.parseJSON(t)).DiagnosticList.length || (populateDiagnosticCenters(), getLatLonDetailDisplayGoogleMap(mapAddress, smsTitle, mapLatitude, mapLongitude), paginingNo(totDiag, a, s, 10, "divPagination"))
+            0 < t.indexOf("Database error") && //alert(t), 0 == (DiagnoJson = $.parseJSON(t)).DiagnosticList.length || (populateDiagnosticCenters(), getLatLonDetailDisplayGoogleMap(mapAddress, smsTitle, mapLatitude, mapLongitude), paginingNo(totDiag, a, s, 10, "divPagination"))
         },
         error: function(t) {
-            alert("fn getDiagnosticCentersAccPage " + t)
+            //alert("fn getDiagnosticCentersAccPage " + t)
         }
     })
 }
@@ -1490,7 +1490,7 @@ function fillStateAndCityAndGarageList() {
             sAction: "fillStateAndCityAndGarageList"
         },
         success: function(t) {
-            if (0 < t.indexOf("Database error")) alert(t);
+            if (0 < t.indexOf("Database error")) //alert(t);
             else {
                 GarageJson = $.parseJSON(t), $("#ddlstate").empty().append($("<option></option>").val("0").html("Please select state"));
                 for (var e = 0; e < GarageJson.statelist.length; e++) GarageJson.statelist[e].isSameState, $("#ddlstate").append($("<option></option>").val("" + GarageJson.statelist[e].sId).html("" + GarageJson.statelist[e].stateN));
@@ -1503,7 +1503,7 @@ function fillStateAndCityAndGarageList() {
             }
         },
         error: function(t) {
-            alert("fn fillStateAndCityAndGarageList " + t)
+            //alert("fn fillStateAndCityAndGarageList " + t)
         }
     })
 }
@@ -1535,10 +1535,10 @@ function getGarageAccPage(t, e, a, s) {
             rowNo: s
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t), 0 == (GarageJson = $.parseJSON(t)).GarageList.length ? (document.getElementById("idGarageList").innerHTML = "No Record Found", $("#divPagination").hide()) : (populateGarage(), getLatLonDetailDisplayGoogleMap(mapAddress, smsTitle, mapLatitude, mapLongitude), $("#divPagination").show(), paginingNo(totGarage, a, s, 10, "divPagination"))
+            0 < t.indexOf("Database error") && //alert(t), 0 == (GarageJson = $.parseJSON(t)).GarageList.length ? (document.getElementById("idGarageList").innerHTML = "No Record Found", $("#divPagination").hide()) : (populateGarage(), getLatLonDetailDisplayGoogleMap(mapAddress, smsTitle, mapLatitude, mapLongitude), $("#divPagination").show(), paginingNo(totGarage, a, s, 10, "divPagination"))
         },
         error: function(t) {
-            alert("fn getGarageAccPage " + t)
+            //alert("fn getGarageAccPage " + t)
         }
     })
 }
@@ -1557,10 +1557,10 @@ function getGarageBaseOnMakeAndShopName(t, e, a, s, n, i) {
             cityId: i
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t), 0 == (GarageJson = $.parseJSON(t)).GarageList.length ? (document.getElementById("idGarageList").innerHTML = "No Record Found", $("#divPagination").hide()) : (populateGarage(), getLatLonDetailDisplayGoogleMap(mapAddress, smsTitle, mapLatitude, mapLongitude), $("#divPagination").show(), paginingNo(totGarage, a, s, 10, "divPagination"), backtotoppage())
+            0 < t.indexOf("Database error") && //alert(t), 0 == (GarageJson = $.parseJSON(t)).GarageList.length ? (document.getElementById("idGarageList").innerHTML = "No Record Found", $("#divPagination").hide()) : (populateGarage(), getLatLonDetailDisplayGoogleMap(mapAddress, smsTitle, mapLatitude, mapLongitude), $("#divPagination").show(), paginingNo(totGarage, a, s, 10, "divPagination"), backtotoppage())
         },
         error: function(t) {
-            alert("fn getGarageAccPage " + t)
+            //alert("fn getGarageAccPage " + t)
         }
     })
 }
@@ -1586,7 +1586,7 @@ function PopCityAccStateForAgent() {
             iagnType: iagnType
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t);
+            0 < t.indexOf("Database error") && //alert(t);
             try {
                 var e = $.parseJSON(t);
                 $("#ddlcity").empty().append($("<option></option>").val("0").html("Please select city"));
@@ -1596,7 +1596,7 @@ function PopCityAccStateForAgent() {
             }
         },
         error: function(t) {
-            alert("fn PopCityAccState " + t)
+            //alert("fn PopCityAccState " + t)
         }
     })
 }
@@ -1634,7 +1634,7 @@ function fillStateAndCityAndSuspectedFraud() {
             sAction: "fillStateAndCityAndSuspectedFraud"
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t);
+            0 < t.indexOf("Database error") && //alert(t);
             var e = 0;
             if (0 < t.indexOf("%$")) {
                 var a;
@@ -1656,7 +1656,7 @@ function fillStateAndCityAndSuspectedFraud() {
             }
         },
         error: function(t) {
-            alert("fn fillStateAndCityAndSuspectedFraud " + t)
+            //alert("fn fillStateAndCityAndSuspectedFraud " + t)
         }
     })
 }
@@ -1673,10 +1673,10 @@ function getSuspectedFraudAccPage(t, e, a, s) {
             rowNo: s
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t), SuspectJson = $.parseJSON(t), 0 == SuspectJson.SuspectedList.length || (populateSuspectedFraud(), getLatLonDetailDisplayGoogleMap(mapAddress, smsTitle, mapLatitude, mapLongitude), paginingNo(totSus, a, s, 10, "divPagination"))
+            0 < t.indexOf("Database error") && //alert(t), SuspectJson = $.parseJSON(t), 0 == SuspectJson.SuspectedList.length || (populateSuspectedFraud(), getLatLonDetailDisplayGoogleMap(mapAddress, smsTitle, mapLatitude, mapLongitude), paginingNo(totSus, a, s, 10, "divPagination"))
         },
         error: function(t) {
-            alert("fn getSuspectedFraudAccPage " + t)
+            //alert("fn getSuspectedFraudAccPage " + t)
         }
     })
 }
@@ -1704,7 +1704,7 @@ function fillStateAndCityAndBLHospitals() {
             sAction: "fillStateAndCityAndBLHospitals"
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t);
+            0 < t.indexOf("Database error") && //alert(t);
             var e = 0;
             if (0 < t.indexOf("%$")) {
                 var a;
@@ -1726,7 +1726,7 @@ function fillStateAndCityAndBLHospitals() {
             }
         },
         error: function(t) {
-            alert("fn fillStateAndCityAndBLHospitals " + t)
+            //alert("fn fillStateAndCityAndBLHospitals " + t)
         }
     })
 }
@@ -1743,10 +1743,10 @@ function getBLHospitalsAccPage(t, e, a, s) {
             rowNo: s
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t), 0 == (BLHJson = $.parseJSON(t)).BLHList.length || (populateBLHospitals(), getLatLonDetailDisplayGoogleMap(mapAddress, smsTitle, mapLatitude, mapLongitude), paginingNo(totBLH, a, s, 10, "divPagination"))
+            0 < t.indexOf("Database error") && //alert(t), 0 == (BLHJson = $.parseJSON(t)).BLHList.length || (populateBLHospitals(), getLatLonDetailDisplayGoogleMap(mapAddress, smsTitle, mapLatitude, mapLongitude), paginingNo(totBLH, a, s, 10, "divPagination"))
         },
         error: function(t) {
-            alert("fn getBLHospitalsAccPage" + t)
+            //alert("fn getBLHospitalsAccPage" + t)
         }
     })
 }
@@ -1813,12 +1813,12 @@ function getAgentAccFilter(t, e, a, s, n) {
             iAgentType: n
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t);
+            0 < t.indexOf("Database error") && //alert(t);
             var e = $.parseJSON(t);
             1 == n ? 0 == e.InvAgentList.length ? (document.getElementById("divLeftSideInvAgent").innerHTML = "", document.getElementById("divRightSideInvAgent").innerHTML = "", $("#divInvAgentPagination").hide()) : (populateIndividualAgent(e), paginingNo(totInvAgentCount, a, s, 10, "divInvAgentPagination")) : 0 == e.CorpAgentList.length ? (document.getElementById("divLeftSideCorpAgent").innerHTML = "", document.getElementById("divRightSideCorpAgent").innerHTML = "", $("#divCorpAgentPagination").hide()) : (populateCorpAgent(e), paginingNo(totCorpAgentCount, a, s, 10, "divCorpAgentPagination"))
         },
         error: function(t) {
-            alert("fn getBranchAccPage " + t)
+            //alert("fn getBranchAccPage " + t)
         }
     })
 }
@@ -1839,12 +1839,12 @@ function getAgentBaseOnSearch(t, e, a, s, n, i, o, l) {
             agentCode: l
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t);
+            0 < t.indexOf("Database error") && //alert(t);
             var e = $.parseJSON(t);
             1 == n ? 0 == e.InvAgentList.length ? (document.getElementById("divInvDisplaysss").innerHTML = "No Result Found", $("#tblProfile").hide(), $(".Left-update").hide(), $("#divInvAgentPagination").hide()) : (populateIndividualAgent(e), paginingNo(totInvAgentCount, a, s, 10, "divInvAgentPagination"), $("#divShowInvAge").show()) : 0 == e.CorpAgentList.length ? (document.getElementById("divLeftSideCorpAgent").innerHTML = "", document.getElementById("divRightSideCorpAgent").innerHTML = "", $("#divCorpAgentPagination").hide()) : (populateCorpAgent(e), paginingNo(totCorpAgentCount, a, s, 10, "divCorpAgentPagination"))
         },
         error: function(t) {
-            alert("fn getBranchAccPage " + t)
+            //alert("fn getBranchAccPage " + t)
         }
     })
 }
@@ -1859,10 +1859,10 @@ function fillSecurityAndStewardshipPolicy() {
         },
         success: function(t) {
             var e, a = (e = window.location.href.toString().split("/"))[e.length - 1];
-            0 < t.indexOf("Database error") && alert(t), SecurityJson = $.parseJSON(t), "information-and-cyber-security-policy" == a && (populateSecurityPolicy(SecurityJson), $("#tabs-1").show(), $("#tabs-2").hide(), $("#tabs-3").hide(), $("#tabs-4").hide()), "stewardship-policy" == a && (populatestewardshipPolicy(SecurityJson), $("#tabs-1").hide(), $("#tabs-2").show(), $("#tabs-3").hide(), $("#tabs-4").hide()), "whistle-blower-policy" == a && (populateWhistleBlowingPolicy(SecurityJson), $("#tabs-1").hide(), $("#tabs-2").hide(), $("#tabs-3").show(), $("#tabs-4").hide()), "anti-fraud-policy" == a && (populateAntiFraudPolicy(SecurityJson), $("#tabs-1").hide(), $("#tabs-2").hide(), $("#tabs-3").hide(), $("#tabs-4").show())
+            0 < t.indexOf("Database error") && //alert(t), SecurityJson = $.parseJSON(t), "information-and-cyber-security-policy" == a && (populateSecurityPolicy(SecurityJson), $("#tabs-1").show(), $("#tabs-2").hide(), $("#tabs-3").hide(), $("#tabs-4").hide()), "stewardship-policy" == a && (populatestewardshipPolicy(SecurityJson), $("#tabs-1").hide(), $("#tabs-2").show(), $("#tabs-3").hide(), $("#tabs-4").hide()), "whistle-blower-policy" == a && (populateWhistleBlowingPolicy(SecurityJson), $("#tabs-1").hide(), $("#tabs-2").hide(), $("#tabs-3").show(), $("#tabs-4").hide()), "anti-fraud-policy" == a && (populateAntiFraudPolicy(SecurityJson), $("#tabs-1").hide(), $("#tabs-2").hide(), $("#tabs-3").hide(), $("#tabs-4").show())
         },
         error: function(t) {
-            alert("fn fillSecurityAndStewardshipPolicy " + t)
+            //alert("fn fillSecurityAndStewardshipPolicy " + t)
         }
     })
 }
@@ -1875,7 +1875,7 @@ function fillStateAndCityAndBranch() {
             sAction: "fillStateAndCityAndBranch"
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t);
+            0 < t.indexOf("Database error") && //alert(t);
             var e = 0;
             if (0 < t.indexOf("%$")) {
                 var a;
@@ -1897,7 +1897,7 @@ function fillStateAndCityAndBranch() {
             }
         },
         error: function(t) {
-            alert("fn fillStateAndCityAndBranch " + t)
+            //alert("fn fillStateAndCityAndBranch " + t)
         }
     })
 }
@@ -1914,10 +1914,10 @@ function getBranchAccPage(t, e, a, s) {
             rowNo: s
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t), 0 == (BranchJson = $.parseJSON(t)).BranchList.length || (41 == e && (iscity = !0), populateBranch(), paginingNo(totBranch, a, s, 10, "divPagination"), backtotoppage(), getLatLonDetailDisplayGoogleMap(mapAddress, smsTitle, mapLatitude, mapLongitude))
+            0 < t.indexOf("Database error") && //alert(t), 0 == (BranchJson = $.parseJSON(t)).BranchList.length || (41 == e && (iscity = !0), populateBranch(), paginingNo(totBranch, a, s, 10, "divPagination"), backtotoppage(), getLatLonDetailDisplayGoogleMap(mapAddress, smsTitle, mapLatitude, mapLongitude))
         },
         error: function(t) {
-            alert("fn getBranchAccPage " + t)
+            //alert("fn getBranchAccPage " + t)
         }
     })
 }
@@ -1973,7 +1973,7 @@ function getPressCoverageList() {
         },
         success: function(t) {
             var e = "";
-            0 < t.indexOf("Database error") && alert(t);
+            0 < t.indexOf("Database error") && //alert(t);
             try {
                 var a = $.parseJSON(t);
                 $("#ddlyear").empty();
@@ -1987,7 +1987,7 @@ function getPressCoverageList() {
             "" != e && displayYear(e)
         },
         error: function(t) {
-            alert("fn getPressReleaseList " + t)
+            //alert("fn getPressReleaseList " + t)
         }
     })
 }
@@ -2010,7 +2010,7 @@ function getPCAccYear(t, s, e) {
             year: t
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t);
+            0 < t.indexOf("Database error") && //alert(t);
             try {
                 var e = $.parseJSON(t);
                 displayListOfPr(e, "pc");
@@ -2019,7 +2019,7 @@ function getPCAccYear(t, s, e) {
             } catch (t) {}
         },
         error: function(t) {
-            alert("fn getPCAccYear " + t)
+            //alert("fn getPCAccYear " + t)
         }
     })
 }
@@ -2036,14 +2036,14 @@ function getPRAccYear(t) {
             year: t
         },
         success: function(t) {
-            0 < t.indexOf("Database error") && alert(t);
+            0 < t.indexOf("Database error") && //alert(t);
             try {
                 var e = $.parseJSON(t);
                 displayListOfPr(e, "pr")
             } catch (t) {}
         },
         error: function(t) {
-            alert("fn getPRAccYear " + t)
+            //alert("fn getPRAccYear " + t)
         }
     })
 }
@@ -2061,7 +2061,7 @@ function getPressReleaseList() {
         },
         success: function(t) {
             var e;
-            0 < t.indexOf("Database error") && alert(t);
+            0 < t.indexOf("Database error") && //alert(t);
             try {
                 var a = $.parseJSON(t);
                 $("#ddlyear").empty();
@@ -2073,7 +2073,7 @@ function getPressReleaseList() {
             displayYear(e)
         },
         error: function(t) {
-            alert("fn getPressReleaseList " + t)
+            //alert("fn getPressReleaseList " + t)
         }
     })
 }
@@ -2092,7 +2092,7 @@ function fillPubDiscAndAnnRe() {
             PubDiscAnnReJson = $.parseJSON(t), "public-disclosure" == a && (iInvestInfo = 1, popPubDiscDdl(PubDiscAnnReJson), populatePubDisc(PubDiscAnnReJson), $("#tabs-1").show(), $("#tabs-2").hide(), $("#tabs-3").hide(), $("#tabs-4").hide()), "annual-report" == a && (iInvestInfo = 2, popAnuuReDdl(PubDiscAnnReJson), populateAnnuRe(PubDiscAnnReJson), $("#tabs-1").hide(), $("#tabs-2").show(), $("#tabs-3").hide(), $("#tabs-4").hide()), "agm-notices" == a && (iInvestInfo = 3, populateAgmNotice(PubDiscAnnReJson), $("#tabs-1").hide(), $("#tabs-2").hide(), $("#tabs-3").show(), $("#tabs-4").hide()), "egm-notices" == a && (iInvestInfo = 4, popEgmDdl(PubDiscAnnReJson), populateEgmNotice(PubDiscAnnReJson), $("#tabs-1").hide(), $("#tabs-2").hide(), $("#tabs-3").hide(), $("#tabs-4").show())
         },
         error: function(t) {
-            alert("fn fillPubDiscAndAnnRe " + t)
+            //alert("fn fillPubDiscAndAnnRe " + t)
         }
     })
 }
@@ -2226,14 +2226,14 @@ function GetDataYearChange() {
             year: a
         },
         success: function(t) {
-            if (0 < t.indexOf("Database error")) alert(t);
+            if (0 < t.indexOf("Database error")) //alert(t);
             else {
                 var e = $.parseJSON(t);
                 1 == iInvestInfo && (populatePubDisc(e), document.getElementById("h4year").innerHTML = a), 2 == iInvestInfo && (populateAnnuRe(e), document.getElementById("h4anuYear").innerHTML = a), 3 == iInvestInfo && populateAgmNotice(e), 4 == iInvestInfo && (populateEgmNotice(e), document.getElementById("h4egmYear").innerHTML = a)
             }
         },
         error: function(t) {
-            alert("fn GetDataYearChange " + t)
+            //alert("fn GetDataYearChange " + t)
         }
     })
 }
