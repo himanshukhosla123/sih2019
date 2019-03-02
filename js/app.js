@@ -19,7 +19,7 @@ app.config(['$routeProvider', function ($routeProvider, $locationProvider) {
         })
         .when('/other-apps', {
             templateUrl: './other-apps.html',
-            // controller: 'whyUsController'
+             controller: 'otherAppsController'
         })
         .when('/other-services', {
             templateUrl: './other-services.html',
