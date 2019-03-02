@@ -43,7 +43,7 @@ function generateLead(obj){
             <div class="cand-box-body row">
                 
                 <div class="user_thumb">
-                    <img src=${obj.image && obj.image.length>15||"./image/user.jpg"} class="img-responsive img-circle"/>
+                    <img src=${obj.image && obj.image.length>15||"./img/girls.png"} class="img-responsive img-circle"/>
                 </div>
                 
                 <div class="user_info pull-left">
@@ -51,7 +51,7 @@ function generateLead(obj){
                     <div class="cand-desig">${obj.phone}</div>             
                 </div>
             
-            <div class="user_extra_info-xs">
+            <div class="user_extra_info">
                     <div class="cand-info-col">
                         "Age" : ${obj.age||obj.exp||""}
                     </div>
