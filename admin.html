@@ -1,14 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+
   <meta charset="utf-8">
-  <title>SocketIO Client</title>
-  <script src="/socket.io/socket.io.js"></script>
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title></title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <!-- <link href="css/simple-sidebar.css" rel="stylesheet"> -->
+  <link href="simple-sidebar.css" rel="stylesheet">
+
+  <script src="/socket.io/socket.io.js"></script>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
@@ -17,27 +27,82 @@
      width: 10em;
      margin-right: 0;
    }
-   .bg-light{
+   .bg-light1{
      width: 20%;
+   }
+   .nav-pills{
+     padding-left: 1em;
+   }
+   .card-title{
+     color: red;
+     text-transform:  uppercase;
+     font-weight: bold;
+     font-size: 1.5em;
+   }
+   .card-title1{
+     text-transform:  uppercase;
+     font-weight: bold;
+     font-size: 1em;
    }
 
   </style>
+  
 </head>
 
-<body style="overflow-x:hidden">
-    <nav class="navbar navbar-default" style="background: blue;color:white;">
+<body>
+
+  <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      
+      <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Shortcuts</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <!-- <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button> -->
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+       <!-- <nav class="navbar navbar-default" style="background: blue;color:white;">
         <div class="container-fluid">
           <div class="navbar-header">
             <a class="navbar-brand" href="#" style="background: blue;color:white;">
-              <!-- <img alt="Brand" src="..."> -->
+              <img alt="Brand" src="..."> 
               Future Generali Admin panel
             </a>
           </div>
         </div>
-    </nav>
+    </nav> -->
     <div class="d-flex" id="wrapper">
 
-    <div class="bg-light border-right" id="sidebar-wrapper" style="max-height:calc(100vh - 65px); overflow-y: auto;padding-top: 15px;">
+    <div class="bg-light1 border-right" id="sidebar-wrapper" style="max-height:calc(100vh - 65px); overflow-y: auto;padding-top: 15px;">
       <div class="list-group list-group-flush images">
         <a href="#" class="list-group-item list-group-item-action bg-light text-center">
           <img
@@ -82,19 +147,34 @@
           <div class="card" style="width: 90%;">
               <img src="" class="card-img-top" >
                 <div class="card-body">
-                  <img src="./img/user.png" style="width: 2.5em;">
+                  <img src="./img/user.jpg" style="width: 10em; border-radius: 50%;">
                 <h5 class="card-title">Ramesh Mehta</h5>
+                <h6 class = "card-title1">Contact number: 9898989898</h6>
                 <p class="card-text">Interested for life insurance</p>
               </div>
           </div>
         </div>
     </div>
     </div>
-  </div>
+  </div> </div>
+    </div>
+    <!-- /#page-content-wrapper -->
 
-  <!-- Client Code -->
-  <script type="text/javascript">
-    // Get WebSocket
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+	
+	// Get WebSocket
     const config = {
       apiKey: "AIzaSyAxmadWMfKFDoqTbC0IMZuBSDj3L8Bb4Wo",
       authDomain: "chatappweb-d9fae.firebaseapp.com",
@@ -129,8 +209,8 @@
     });
     
     
-    
   </script>
+
 </body>
 
 </html>
