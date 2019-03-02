@@ -1152,6 +1152,8 @@ company in india,general insurance india, buy general insurance" />
                 <style>
                         .carousel-inner img{
                             width: 100%;
+                            height: auto;
+                            max-height: 72vh; 
                         }
                     </style>
                     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -1183,7 +1185,7 @@ company in india,general insurance india, buy general insurance" />
   <script>
         var arr=[],url="https://www.pnbmetlife.com/images/Mera-term-plan_1260x400_tcm47-28337.jpg";
         // const firebase=firebase;
-        arr=[url];
+        arr=[];
         const config = {
         apiKey: "AIzaSyAxmadWMfKFDoqTbC0IMZuBSDj3L8Bb4Wo",
         authDomain: "chatappweb-d9fae.firebaseapp.com",
@@ -1207,10 +1209,10 @@ company in india,general insurance india, buy general insurance" />
                 console.log("a",data);
                 if(data && data instanceof Object){
                     let a=Object.keys(data).map(key=>data[key]);
+                    arr=[];
                     a.forEach(function(val){
                         arr.push(val.url)
                         renderImagesCarousel(); 
-                
                     })
                 }
             });
@@ -1222,6 +1224,9 @@ company in india,general insurance india, buy general insurance" />
               var container=document.getElementById("carousel-inner");
               var lists=document.getElementById("carousel-indicators");
               var childer='',list='';
+              if(arr.length==0){
+                  childer="<h2>No Presentation Found at the moment!</h2>";
+              }
               for(var i=0;i<arr.length;i++){
                   if(i==0)
                   {
@@ -1234,7 +1239,6 @@ company in india,general insurance india, buy general insurance" />
                   list+='<li data-target="#carousel-example-generic" data-slide-to="'+i+'" class="active"></li>';
                   else
                   list+='<li data-target="#carousel-example-generic" data-slide-to="'+i+'"></li>';
-                  
                 }
               container.innerHTML=childer;
               lists.innerHTML=list;
@@ -1247,7 +1251,7 @@ company in india,general insurance india, buy general insurance" />
 
             <!-- Modal Travel Buy Online -->
 
-            <footer class="footer-container" id="placeholderlasts">
+            <footer class="footer-container" id="placeholderlasts" style="display:block">
                 <div id="ctl00_placeholderfooter">
                     <div id="show-footer" class="btn btn-default btn-main"><i class="fa fa-angle-down"></i> Show Footer
                     </div>

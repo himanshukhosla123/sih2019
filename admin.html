@@ -19,7 +19,7 @@
   <script src="/socket.io/socket.io.js"></script>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
   <style>
@@ -30,8 +30,14 @@
    .bg-light1{
      width: 20%;
    }
+   #sidebar-wrapper{
+     padding: 10px;
+   }
    .nav-pills{
      padding-left: 1em;
+   }
+   .none{
+     display: none !important;
    }
    .card-title{
      color: red;
@@ -44,25 +50,43 @@
      font-weight: bold;
      font-size: 1em;
    }
-
+.bg-light{
+  padding: 15px;
+  border: 0px;
+  margin-bottom: 10px;
+}
+a.bg-light.active{
+  background-color:#1F6EB5 !important;
+  color: white !important;
+}
   </style>
   
 </head>
 
 <body>
 
-  <div class="d-flex" id="wrapper">
+  <div class="d-flex" style="display: flex!important;" id="wrapper">
 
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
       
-      <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Shortcuts</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
+      <div class="list-group list-group-flush" style="padding-top: 50px;">
+          
+        <a href="#" class="list-group-item list-group-item-action bg-light active"
+        id="presentation"
+        onclick='showPresentation()'       
+        >Presentation</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light"
+        id="leads"
+        onclick='showLeads()'
+        >Leads</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light"
+        id="recommendation"        
+        onclick='showRecommendation()'
+        >Recommendations</a>
+        <!-- <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Status</a> -->
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -77,97 +101,105 @@
           <span class="navbar-toggler-icon"></span>
         </button> -->
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent"  style="background: blue;color:white;">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="#"  style="background: blue;color:white;">Future Generali Lead Dashboard <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="#">Link</a>
-            </li>
+            </li> -->
           </ul>
         </div>
       </nav>
 
       <div class="container-fluid">
-       <!-- <nav class="navbar navbar-default" style="background: blue;color:white;">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#" style="background: blue;color:white;">
-              <img alt="Brand" src="..."> 
-              Future Generali Admin panel
-            </a>
-          </div>
-        </div>
-    </nav> -->
-    <div class="d-flex" id="wrapper">
+       
+          <div class="d-flex" id="wrapper">
 
-    <div class="bg-light1 border-right" id="sidebar-wrapper" style="max-height:calc(100vh - 65px); overflow-y: auto;padding-top: 15px;">
-      <div class="list-group list-group-flush images">
-        <a href="#" class="list-group-item list-group-item-action bg-light text-center">
-          <img
-          src="./img/fg4.png"
-          alt="" class="rounded">
-        </a>
-        <a href="#" class="list-group-item list-group-item-action bg-light text-center">
-          <img
-          src="./img/fg3.png"
-          alt="" class="rounded">
-        </a>
-        <a href="#" class="list-group-item list-group-item-action bg-light text-center">
-          <img
-          src="./img/fg2.png"
-           alt="" class="rounded">
-        </a>
-        <a href="#" class="list-group-item list-group-item-action bg-light text-center">
-          <img
-          src="./img/fg1.png"
-           alt="" class="rounded">
-        </a>
-        <a href="#" class="list-group-item list-group-item-action bg-light text-center">
-          <img
-            src="./img/future generali.png"
-            alt="" class="rounded">
-        </a>
-      </div>
-    </div>
-    <div id="page-content-wrapper" style="width: 100%;min-height:600px;">
-    <div class="row" style="">
-        <div class="container text-center col-8">
-            
-            <ul class="nav nav-pills">
-                <li role="presentation" class="active"><a href="#">Presentation</a></li>
-                <li role="presentation"><a href="#">Scribble Pad</a></li>
-            </ul>
-          <div class="text-center" style="margin-top: 30px;background-color:rgba(0,0,0,0.2)">
-            <img src="" class="" alt="" id="output" style="border:2px solid #ccc;width: 100%;min-height: 400px;">
+          <div class="bg-light1 border-right" id="sidebar-wrapper" style="max-height:calc(100vh - 65px); overflow-y: auto;padding-top: 15px;">
+            <div class="list-group list-group-flush images">
+              <a href="#" class="list-group-item list-group-item-action bg-light text-center">
+                <img
+                src="./img/fg4.png"
+                alt="" class="rounded">
+              </a>
+              <a href="#" class="list-group-item list-group-item-action bg-light text-center">
+                <img
+                src="./img/fg3.png"
+                alt="" class="rounded">
+              </a>
+              <a href="#" class="list-group-item list-group-item-action bg-light text-center">
+                <img
+                src="./img/fg2.png"
+                alt="" class="rounded">
+              </a>
+              <a href="#" class="list-group-item list-group-item-action bg-light text-center">
+                <img
+                src="./img/fg1.png"
+                alt="" class="rounded">
+              </a>
+              <a href="#" class="list-group-item list-group-item-action bg-light text-center">
+                <img
+                  src="./img/future generali.png"
+                  alt="" class="rounded">
+              </a>
+            </div>
           </div>
-        </div>
-        <div class="container-fluid text-center col-4">
-          <div class="card" style="width: 90%;">
-              <img src="" class="card-img-top" >
-                <div class="card-body">
-                  <img src="./img/user.jpg" style="width: 10em; border-radius: 50%;">
-                <h5 class="card-title">Ramesh Mehta</h5>
-                <h6 class = "card-title1">Contact number: 9898989898</h6>
-                <p class="card-text">Interested for life insurance</p>
+          <div id="page-content-wrapper" style="width: 100%;min-height:600px;">
+          <div class="row" style="">
+              <div class="container text-center col-8">
+                  
+                  <ul class="nav nav-pills">
+                      <li role="presentation" class="active" onclick="showPresentation()"><a href="#">Presentation</a></li>
+                      <li role="presentation"><a href="#" onclick="showScribble()">Scribble Pad</a></li>
+                  </ul>
+                <div class="text-center" style="margin-top: 30px;background-color:rgba(0,0,0,0.2)">
+                  <img src="" class="" alt="" id="output" style="border:2px solid #ccc;width: 100%;min-height: 400px;">
+                </div>
+              </div>
+              <div class="container-fluid text-center col-4">
+                <div class="card" style="width: 90%;">
+                    <img src="" class="card-img-top" >
+                      <div class="card-body">
+                        <img src="./img/user.jpg" style="width: 10em; border-radius: 50%;">
+                      <h5 class="card-title">Ramesh Mehta</h5>
+                      <h6 class = "card-title1">Contact number: 9898989898</h6>
+                      <p class="card-text">Interested for life insurance</p>
+                    </div>
+                </div>
               </div>
           </div>
-        </div>
-    </div>
-    </div>
-  </div> </div>
+          </div>
+          </div>
+          
+          <div class="d-flex" id="wrapper2">
+          canvas
+          </div>
+
+          <div class="d-flex" id="wrapper3">
+            leads
+            
+          </div>
+
+          <div class="d-flex" id="wrapper4">
+            recommendations
+          </div>
+      
+      </div>
     </div>
     <!-- /#page-content-wrapper -->
 
   </div>
   <!-- /#wrapper -->
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Menu Toggle Script -->
+  
+  <script src="./js/leads.js"></script>
+
+  <script src="./js/recommendation.js"></script>
+
   <script>
     $("#menu-toggle").click(function(e) {
       e.preventDefault();
@@ -197,7 +229,7 @@
       // if(this.state.urlValid)
     },(error)=>console.log(error));
     
-    
+    showPresentation();
     $(".images img").click(function(){
         console.log(this.src)
         var url=this.src;
@@ -207,10 +239,33 @@
             title:"",
         });
     });
+    function showPresentation(){
+      $(".list-group-item.active").removeClass("active");
+      $("#presentation").addClass("active");      
+      $(".d-flex").addClass("none");
+      $(".d-flex#wrapper").removeClass("none");
+    }
+    function showLeads(){
+      $(".list-group-item.active").toggleClass("active"); 
+      $("#leads").addClass("active");     
+      $(".d-flex").addClass("none");
+      $(".d-flex#wrapper3").removeClass("none");
+      loadLeads();
+    }
+    function showRecommendation(){
+      $(".list-group-item.active").toggleClass("active"); 
+      $("#recommendation").addClass("active");    
+      $(".d-flex").addClass("none");
+      $(".d-flex#wrapper4").removeClass("none");  
+    }
+    function showScribble(){
+      $("#presentation").addClass("active"); 
+      $(".d-flex").addClass("none");
+      $(".d-flex#wrapper2").removeClass("none");  
     
+    }
     
   </script>
-
 </body>
 
 </html>

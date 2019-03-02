@@ -47,3 +47,262 @@ body {
     margin-left: -15rem;
   }
 }
+
+.cand-box-header{
+  padding:5px;
+  background-color: #F2F2F2;
+  text-transform: capitalize;
+}
+.cand-box-body{
+  display: flex;
+  flex-direction:"row";
+}
+
+.cand-box-body .user_thumb img{
+   min-width:40px;
+   min-height:40px;
+   max-width:80px; 
+   max-height:60px;
+   align-self: center;
+   display: inline-block;
+}
+.cand-box-body .user_thumb{    
+  align-self: center;
+  padding:10px 0;
+  flex:1;
+  text-align: center;
+  justify-content: center;
+  /* background:red; */
+}
+.cand-box-body .user_info{
+  flex:5;
+  justify-content:center;
+  /* background: blue; */
+  align-self: center;
+  padding:0px 5px;
+}
+.cand-box-body .cand-name{
+  color: #0070C0;
+  font-size: 16px;
+  margin:5px 0px 3px; 
+}
+.cand-box-body .cand-desig{
+  color: #949494;
+  font-size: 13px;
+  margin-bottom:4px;
+  font-weight: 700; 
+}
+.cand-box-body .cand-emp{
+  color: #818181;
+  font-size: 12px;
+  margin-bottom:4px;
+  font-weight: 500; 
+}
+.cand-box-body .user_extra_info,.user_extra_info-xs{
+  flex:4;
+  flex-direction:row;
+  justify-content:center;
+  /* background: green; */
+  padding:0px 5px;
+  display: flex;
+  text-align: right;
+}
+
+.cand-box-footer{
+  padding: 5px 10px;
+  background-color: #fff;
+  border-top: 1px solid #d8d8d8;
+}
+
+.cand-box-footer>div:nth-child(1){
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.candidate_list_container .tabs{
+  margin: 0;
+}
+
+@media(max-width:400px){
+  .cand-box-footer button.btn-custom{
+      font-size: 12px !important;
+  }
+}
+
+.cand-box-body .user_extra_info .cand-info-col,.user_extra_info-xs .cand-info-col{
+  flex:1;
+  justify-content: center;
+  text-align: center;
+  /* align-content: center; */
+  display: flex;
+  flex-direction:column;
+  border-right: 1px solid #ccc;
+  padding: 0 10px;
+  margin: 10px 0;
+}
+.cand-box-body .cand-info-col span{
+  display: block;
+  font-size: 14px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.cand-box-body .cand-info-col div{
+  font-size: 12px;
+}
+.cand-box-body .cand-info-col:last-child{
+  border-right:none;
+}
+
+button.btn-custom{
+  border:none;
+  outline:none;
+  height: auto;
+}
+
+.cand-box .user_extra_info-xs{
+  display:none;
+}
+
+.cand-box{
+  background-color: white;
+  border-radius: 2px;
+  overflow: hidden;
+  /* padding: 12px; */
+  display: block;
+  margin: 0 5px 5px;
+  padding-bottom: 0px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2);
+}
+
+.user_extra_info-xs .cand-info-col span:nth-child(1){
+  font-weight: bold;
+}
+
+.activeJobs.cand-box-body{
+  height: 120px;
+}
+
+@media(min-width:992px){
+  .main.container-fluid{
+      /* min-height:900px; */
+  }
+}
+
+
+@media(max-width:768px){
+  
+  .cand-box .col-xs-12{
+      text-align:center;
+  }
+}
+
+@media(max-width:500px){
+  /* .cand-box-header div{
+      margin: 2px;
+  } */
+  
+  .cand-box-body .user_thumb{
+       flex:1;
+       /* background:red; */
+  }
+  .cand-box-body .user_info{
+      flex:6;
+  }
+  .cand-box-body .user_extra_info{
+      display:none;
+  }
+  .cand-box .user_extra_info-xs{
+      display:flex;
+      width:100%;
+      flex-direction:row;
+      justify-content: "center"; 
+  }
+
+}
+
+.candidate_list_container .job_info .fa{
+  font-size: 20px;
+  color: black
+}
+
+.candidate_list_container .cand-box-body .btn{
+  padding: 0;
+}
+
+.candidate_list_container .fa{
+  color: black;
+}
+
+.candidate_list_container .cand-box-body .btn .fa-edit{
+  font-size: 18px;
+  color: #b2b2b2;
+}
+
+.candidate_list_container .startCamp{
+  height: 40px;
+  width: 40px;
+  padding: 0 !important;
+  background-size: 100%;
+  background-position: center;
+}
+
+#mncForm .modal-body div span:nth-of-type(1){
+  margin-right: 10px;
+}
+
+#mncForm .modal-body div{
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#mncForm .modal-body div:hover{
+  background-color: #d8d8d8;
+  color: #5995ed;
+}
+
+#mncInfoForm .form-inline .form-group {
+  /* display: block !important; */
+  margin-bottom: 15px !important;
+}
+
+#mncInfoForm form .form-group{
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+#mncInfoForm form .form-group input[type="text"], #mncInfoForm form .form-group input[type="number"]{
+  width: 70%
+}
+
+#mncInfoForm form textarea{
+  display: block;
+  width: 100% !important;
+  margin-bottom: 10px;
+}
+
+#mncInfoForm form label{
+  text-transform: capitalize;
+}
+
+#mncInfoForm form .form-group input::placeholder{
+  text-transform: capitalize;
+  font-weight: 100;
+}
+
+
+@media(max-width:500px){
+  .cand-box{
+      margin: 0 0 5px;
+      border-radius: 0
+  }
+}
+
+
+.cand-box-footer button.btn-custom{
+  font-size: 13px;
+  font-weight: 600;
+  padding: 2px 5px;
+}
