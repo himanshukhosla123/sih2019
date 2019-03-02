@@ -35,8 +35,16 @@ company in india,general insurance india, buy general insurance" />
     <link href="general-insurance/css/style.css" rel="stylesheet" />
     <link href="general-insurance/css/home.css" rel="stylesheet" />
     <link href="general-insurance/css/style_for_review.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
     <!-- Javascript Plugins -->
-    <script type="text/javascript" src="general-insurance/js/jquery.js"></script>
     <script type="text/javascript" src="general-insurance/js/master.js"></script>
     <script type="text/javascript" src="general-insurance/js/MenuManager.js"></script>
     <script type="text/javascript" src="general-insurance/js/LatestServiceCall.js"></script>
@@ -1188,16 +1196,26 @@ company in india,general insurance india, buy general insurance" />
             const db= firebase.database();
             let ref=db.ref("fg/slides/1")
             renderImagesCarousel(arr);
-            
-            ref.on('value',
-            (snapshot)=>{
+            const promise=firebase.auth().signInWithEmailAndPassword(
+                "ashfaq@vlsconsulting.in"
+                ,"9941323267"
+            );
+            promise.then((data)=>{
+
+            ref.on('value',function(snapshot){
                 let data=snapshot.val();
-                console.log(data);
+                console.log("a",data);
                 if(data && data instanceof Object){
-                    arr.push(data.url)
-                    renderImagesCarousel(); 
+                    let a=Object.keys(data).map(key=>data[key]);
+                    a.forEach(function(val){
+                        arr.push(val.url)
+                        renderImagesCarousel(); 
+                
+                    })
                 }
             });
+            },(error)=>console.log(error));
+                
     
           function renderImagesCarousel(){
               //alert("render");
@@ -1531,10 +1549,3 @@ company in india,general insurance india, buy general insurance" />
 </body>
 </html>
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
