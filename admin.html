@@ -86,6 +86,48 @@ a.bg-light.active{
   text-transform: uppercase;
 
 }
+
+.person {
+    border: 10px solid transparent;
+    margin-bottom: 25px;
+    width: 80%;
+    height: 80%;
+    opacity: 0.7;
+  }
+  .person:hover {
+    border-color: #f1f1f1;
+  }
+  
+
+  .list-group-item:first-child {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+  .list-group-item:last-child {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .thumbnail {
+    padding: 0 0 15px 0;
+    border: none;
+    border-radius: 0;
+  }
+  .thumbnail p {
+    margin-top: 15px;
+    color: #555;
+  }
+  .btn {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #f1f1f1;
+    border-radius: 0;
+    transition: .2s;
+  }
+  .btn:hover, .btn:focus {
+    border: 1px solid #333;
+    background-color: #fff;
+    color: #000;
+  }
   </style>
   
 </head>
@@ -201,16 +243,75 @@ a.bg-light.active{
           </div>
           
           <div class="d-flex" id="wrapper2">
-          canvas
-          </div>
+          
+              <div>
+              <ul class="nav nav-pills">
+                <li role="presentation" class="active" onclick="showPresentation()"><a href="#">Presentation</a></li>
+                <li role="presentation"><a href="#" onclick="showScribble()">Scribble Pad</a></li>
+              </ul>
+              <div id="tab2">
+                <canvas class="whiteboard"></canvas>
+    
+                <div class="colors">
+                  <div class="color black"></div>
+                  <div class="color red"></div>
+                  <div class="color green"></div>
+                  <div class="color blue"></div>
+                  <div class="color yellow"></div>
+                </div>
+              </div>
+            </div>
+            </div>
+    
+          
 
           <div class="d-flex" id="wrapper3">
             leads
             
           </div>
 
-          <div class="d-flex" id="wrapper4">
-            recommendations
+          <div class="d-flex" id="wrapper4" style="background-color: rgba(0,0,0,0.7)">
+           <!-- Container (recomendation Section) -->
+<div id="tour" class="bg-1">
+  <div class="container">
+    <h3 class="text-center" style="color:white">RECOMENDATIONS FOR YOU</h3>
+    <p class="text-center" style="color:white">Plan your future with future generali. <br> Check out our policy plans.</p>
+    <ul class="list-group">
+      <li class="list-group-item">Enter customer name </li> 
+      <li class="list-group-item">Enter customer age<span class="badge">10</span></li>  
+      <li class="list-group-item">Is he/she married?<span class="badge">8</span></li> 
+      <li class="list-group-item">Is she/he having a child?<span class="badge">2</span></li> 
+      <button class="btn">Explore plans</button>
+    </ul>
+
+    <h3 class="text-center" style="color:white; font-family: 'Roboto',sans">RECOMENDED POLICIES FOR CUSTOMER</h3>
+    
+    <div class="row text-center" style="margin-top:10%;">
+      <div class="col-sm-4">
+        <div class="thumbnail">
+          <img src="./img/policy1.png" alt="Paris" width="400" height="300">
+          <p><strong>TRIPLE ADVANTAGE PLAN</strong></p>
+          <button class="btn">Extra features</button>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="thumbnail">
+          <img src="./img/policy1.png" alt="New York" width="400" height="300">
+          <p><strong>5 YEAR PLAN</strong></p>
+          <button class="btn">Extra features</button>
+        </div>
+      </div>
+     
+      <div class="col-sm-4">
+        <div class="thumbnail">
+          <img src="./img/policy1.png" alt="New York" width="400" height="300">
+          <p><strong>COUPLE ORIENTED PLAN</strong></p>
+          <button class="btn">Extra features</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
           </div>
       
       </div>
@@ -291,7 +392,117 @@ a.bg-light.active{
       $(".d-flex#wrapper2").removeClass("none");  
     
     }
-    
+    var canvas = document.getElementsByClassName('whiteboard')[0];
+    var colors = document.getElementsByClassName('color');
+    var context = canvas.getContext('2d');
+
+    var current = {
+      color: 'black'
+    };
+    var drawing = false;
+
+    canvas.addEventListener('mousedown', onMouseDown, false);
+    canvas.addEventListener('mouseup', onMouseUp, false);
+    canvas.addEventListener('mouseout', onMouseUp, false);
+    canvas.addEventListener('mousemove', throttle(onMouseMove, 10), false);
+
+    //Touch support for mobile devices
+    canvas.addEventListener('touchstart', onMouseDown, false);
+    canvas.addEventListener('touchend', onMouseUp, false);
+    canvas.addEventListener('touchcancel', onMouseUp, false);
+    canvas.addEventListener('touchmove', throttle(onMouseMove, 10), false);
+
+    for (var i = 0; i < colors.length; i++) {
+      colors[i].addEventListener('click', onColorUpdate, false);
+    }
+
+    //socket.on('drawing', onDrawingEvent);
+
+    window.addEventListener('resize', onResize, false);
+    onResize();
+
+    //let messagesRef2 = db.ref("fg/scribble");
+    function drawLine(x0, y0, x1, y1, color) {
+      context.beginPath();
+      context.moveTo(x0, y0);
+      context.lineTo(x1, y1);
+      context.strokeStyle = color;
+      context.lineWidth = 2;
+      context.stroke();
+      context.closePath();
+
+      // if (!emit) { return; }
+      var w = canvas.width;
+      var h = canvas.height;
+
+
+      console.log('In scribble');
+      messagesRef2.push({
+        x0: x0 / w,
+        y0: y0 / h,
+        x1: x1 / w,
+        y1: y1 / h,
+        color: color
+      });
+      console.log(messagesRef2);
+
+      // socket.emit('drawing', {
+      //   x0: x0 / w,
+      //   y0: y0 / h,
+      //   x1: x1 / w,
+      //   y1: y1 / h,
+      //   color: color
+      // });
+    }
+
+    function onMouseDown(e) {
+      drawing = true;
+      current.x = e.clientX || e.touches[0].clientX;
+      current.y = e.clientY || e.touches[0].clientY;
+    }
+
+    function onMouseUp(e) {
+      if (!drawing) { return; }
+      drawing = false;
+      drawLine(current.x, current.y, e.clientX || e.touches[0].clientX, e.clientY || e.touches[0].clientY, current.color, true);
+    }
+
+    function onMouseMove(e) {
+      if (!drawing) { return; }
+      drawLine(current.x, current.y, e.clientX || e.touches[0].clientX, e.clientY || e.touches[0].clientY, current.color, true);
+      current.x = e.clientX || e.touches[0].clientX;
+      current.y = e.clientY || e.touches[0].clientY;
+    }
+
+    function onColorUpdate(e) {
+      current.color = e.target.className.split(' ')[1];
+    }
+
+    // limit the number of events per second
+    function throttle(callback, delay) {
+      var previousCall = new Date().getTime();
+      return function () {
+        var time = new Date().getTime();
+
+        if ((time - previousCall) >= delay) {
+          previousCall = time;
+          callback.apply(null, arguments);
+        }
+      };
+    }
+
+    function onDrawingEvent(data) {
+      var w = canvas.width;
+      var h = canvas.height;
+      drawLine(data.x0 * w, data.y0 * h, data.x1 * w, data.y1 * h, data.color);
+    }
+
+    // make the canvas fill its parent
+    function onResize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
   </script>
 </body>
 
