@@ -152,6 +152,10 @@ body {
 .cand-box-body .cand-info-col:last-child{
   border-right:none;
 }
+.row.no-mrg{
+  margin-left: 0px;
+  margin-right: 0px;
+}
 
 button.btn-custom{
   border:none;
@@ -169,7 +173,7 @@ button.btn-custom{
   overflow: hidden;
   /* padding: 12px; */
   display: block;
-  margin: 0 5px 5px;
+  /* margin: 0 5px 5px; */
   padding-bottom: 0px;
   box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2);
 }
