@@ -11,7 +11,7 @@
   <title></title>
 
   <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
 
   <!-- Custom styles for this template -->
   <link href="simple-sidebar.css" rel="stylesheet">
@@ -20,8 +20,10 @@
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+  <!-- <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
+  <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>  
+  <link rel="stylesheet" href="http://fellowapp.co/assets/css/font-awesome.min.css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
   <style>
    .rounded{
      width: 10em;
@@ -244,7 +246,6 @@ a.bg-light.active{
           
           <div class="d-flex" id="wrapper2">
           
-<<<<<<< HEAD
               <div>
               <ul class="nav nav-pills">
                 <li role="presentation" class="active" onclick="showPresentation()"><a href="#">Presentation</a></li>
@@ -265,15 +266,11 @@ a.bg-light.active{
             </div>
     
           
-=======
-          </div>
->>>>>>> 8e1fe98c1f5109cefb86fdcc0cba9603efdf8bdb
 
           <div class="d-flex" id="wrapper3">
           <h2>Leads</h2>  
           </div>
 
-<<<<<<< HEAD
           <div class="d-flex" id="wrapper4" style="background-color: rgba(0,0,0,0.7)">
            <!-- Container (recomendation Section) -->
 <div id="tour" class="bg-1">
@@ -290,7 +287,7 @@ a.bg-light.active{
 
     <h3 class="text-center" style="color:white; font-family: 'Roboto',sans">RECOMENDED POLICIES FOR CUSTOMER</h3>
     
-    <div class="row text-center" style="margin-top:10%;">
+    <div class="row text-center" style="margin-top:10%;" id="recom">
       <div class="col-sm-4">
         <div class="thumbnail">
           <img src="./img/policy1.png" alt="Paris" width="400" height="300">
@@ -316,10 +313,6 @@ a.bg-light.active{
     </div>
   </div>
   
-=======
-          <div class="d-flex" id="wrapper4">
-            <h2>Recommendations</h2>
->>>>>>> 8e1fe98c1f5109cefb86fdcc0cba9603efdf8bdb
           </div>
       
       </div>
@@ -327,6 +320,102 @@ a.bg-light.active{
     <!-- /#page-content-wrapper -->
 
   </div>
+
+   <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"
+   style="position:fixed;bottom:25px;right:25px;"
+   >
+    <!-- <img src="" alt=""> -->
+    selfie
+    </button>
+    
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <!-- <h4 class="modal-title" id="myModalLabel">Modal title</h4> -->
+          </div>
+          <div class="modal-body">
+                <div class="head text-center" style="background-color: lightblue">
+                  <h2 style="text-transform: uppercase; letter-spacing: 1px; font-weight: bold; padding: 5%; font-family: arial;"> Get Quote from a selfie </h2>
+                </div> 
+               <div class="row">
+               
+                  <div class="col-sm-12" style="text-align: center;">
+                      <img src="user.png" id="cam-img" style=" width:20%; position: relative;">
+                      <!-- <button  onclick="$('#my-file').click();">Upload a selfie</button> -->
+                      <input id="img-btn" type="file" onclick="" placeholder="Upload a selfie"/>
+                </div>
+                <div class="col-xs-12 text-center">
+                  <i class="fa fa-spinner fa-spin"></i>
+                </div>
+                <div class="col-sm-12">     
+                <div class="form-group">
+                   <input type="text" class="form-control" id="usr" placeholder="Enter name">
+                 </div>
+                 <div class="form-group">
+                   <input type="text" class="form-control" id="phno" placeholder="Enter Mobile Number">
+                 </div>
+                 <div class="form-group">
+                       <input type="text" class="form-control" id="sex" placeholder="Male/Female">
+                  </div>
+                  <div class="form-group">
+                        <input type="text" class="form-control" id="age" placeholder="Age">
+                   </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="income" placeholder="average income">
+                  </div>
+       
+                  <button id="btn" onclick="getGender2()">Submit</button>
+                  </div>
+               </div>
+               <style>
+                  .form-group{
+                      font-size: 20px;
+                      color: black;
+                      text-transform: uppercase;
+                      letter-spacing: 1px;
+                      margin: 5px;
+                      font-weight: bold;
+                      
+                  }
+                  input{
+                      padding: 1%;
+                      margin: 1%;
+                      border: 1px solid black;
+                  }
+                  ::placeholder{
+                      text-transform: uppercase;
+                      letter-spacing: 2px;
+                  }
+                  input:hover{
+                      border: 2px solid blue;
+                  }
+                  #btn{
+                      background-color: lightblue;
+                      padding: 0.5%;
+                      color: white;
+                      text-transform: uppercase;
+                      letter-spacing:  2px;
+                      margin: 1%;
+                      width: 30%;
+                      border: 1px solid lightblue;
+                      
+                  }
+                  #btn:hover{
+                      border: 1px solid blue;
+                      font-weight:bold;
+                  }
+                  
+              </style>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="getRecommendation()">Get Recommendations</button>
+          </div>
+        </div>
+      </div>
+    </div>
   <!-- /#wrapper -->
 
 
@@ -334,7 +423,7 @@ a.bg-light.active{
   
   <script src="./js/leads.js"></script>
 
-  <script src="./js/recommendation.js"></script>
+  <!-- <script src="./js/recommendation.js"></script> -->
 
   <script>
     $("#menu-toggle").click(function(e) {
@@ -429,7 +518,7 @@ a.bg-light.active{
     window.addEventListener('resize', onResize, false);
     onResize();
 
-    //let messagesRef2 = db.ref("fg/scribble");
+    let messagesRef2 = db.ref("fg/scribble");
     function drawLine(x0, y0, x1, y1, color) {
       context.beginPath();
       context.moveTo(x0, y0);
